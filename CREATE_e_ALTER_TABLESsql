@@ -1,0 +1,165 @@
+
+DROP TABLE Reserva                  CASCADE CONSTRAINTS PURGE;
+DROP TABLE Quarto                   CASCADE CONSTRAINTS PURGE;
+DROP TABLE Andar                    CASCADE CONSTRAINTS PURGE;
+DROP TABLE TipoQuarto               CASCADE CONSTRAINTS PURGE;
+DROP TABLE PrecoReserva             CASCADE CONSTRAINTS PURGE;
+DROP TABLE EpocaAno                 CASCADE CONSTRAINTS PURGE;
+DROP TABLE Conta                    CASCADE CONSTRAINTS PURGE;
+DROP TABLE Consumos                 CASCADE CONSTRAINTS PURGE;
+DROP TABLE Cliente                  CASCADE CONSTRAINTS PURGE;
+DROP TABLE Fatura                   CASCADE CONSTRAINTS PURGE;
+DROP TABLE PagamentoFatura          CASCADE CONSTRAINTS PURGE;
+DROP TABLE TipoPagamento            CASCADE CONSTRAINTS PURGE;
+DROP TABLE EstadoReserva            CASCADE CONSTRAINTS PURGE;
+DROP TABLE Manutencao               CASCADE CONSTRAINTS PURGE;
+DROP TABLE Limpeza                  CASCADE CONSTRAINTS PURGE;
+DROP TABLE Funcionario              CASCADE CONSTRAINTS PURGE;
+DROP TABLE FuncionarioCamareira     CASCADE CONSTRAINTS PURGE;
+DROP TABLE FuncionarioManutencao    CASCADE CONSTRAINTS PURGE;
+DROP TABLE FuncionarioRestaurante   CASCADE CONSTRAINTS PURGE;
+DROP TABLE FuncionarioRececao       CASCADE CONSTRAINTS PURGE;
+
+Create Table Reserva (
+    codReserva          Integer     CONSTRAINT pkReservaCodReserva     PRIMARY KEY,
+    dataEntrada         Date,
+    dataSaida           Date,
+    tipoQuarto          Varchar(10),
+    dataReserva         Date,
+    numeroPessoas       Integer,
+    dataCancelamento    Date,
+    custoCancelamento   Integer,
+    numeroAndar         Integer,
+    numeroSequencial    Integer,
+    estado              Varchar(30),
+    clienteNif          Integer
+);
+
+Create Table Quarto (
+    numeroAndar         Integer,
+    numeroSequencial    Integer,
+    tipoQuarto          Varchar(10),
+    lotacaoMax          Integer,
+    Constraint pkQuartoNumeroAndarNumeroSequencial  PRIMARY KEY (numeroAndar,numeroSequencial)
+);
+Create Table Andar (
+    numeroAndar         Integer     CONSTRAINT pkAndarNumeroAndar           PRIMARY KEY,
+    nome                Varchar(30)
+);
+Create Table TipoQuarto (
+    tipoQuarto          Varchar(10)     CONSTRAINT pkTipoQuarto                 PRIMARY KEY
+);
+Create Table PrecoReserva(
+    tipoQuarto          Varchar(10),
+    nomeEpoca           Varchar(10),
+    Constraint pkPrecoReservaTipoQuartoNomeEpoca    PRIMARY KEY (tipoQuarto,nomeEpoca)
+);
+Create Table EpocaAno (
+    nomeEpoca           Varchar(10)     Constraint pkEpocaAnoNomeEpoca          PRIMARY KEY,
+    dataInicio          Date        Constraint ukEpocaAnoDataInicio         UNIQUE,
+    dataFim             Date        Constraint ukEpocaAnoDataFim            UNIQUE
+);
+Create Table Conta (
+    nrConta             Integer     Constraint pkContaNrConta               PRIMARY KEY,
+    dataAbertura        Date,
+    codReserva          Integer
+);
+Create Table Consumos (
+    dataConsumos        Date        Constraint pkConsumosDataConsumos       PRIMARY KEY,
+    produto             Varchar(30),     
+    custo               Integer,
+    nrConta             Integer
+);
+Create Table Cliente (
+    NIF                 Integer     Constraint pkClienteNIF                 PRIMARY KEY,
+    nome                Varchar(50),
+    email               Varchar(50) Constraint nnClienteEmail               NOT NULL,
+    telefone            Integer     Constraint nnClienteTelefone            NOT NULL,
+    localidade          Varchar(50) Constraint nnClienteLocalidade          NOT NULL,
+    concelho            Varchar(50) Constraint nnClienteConcelho            NOT NULL
+);
+Create Table Fatura (
+    nrFatura            Integer     Constraint pkFaturaNrFatura             PRIMARY KEY,
+    codReserva          Integer
+);
+Create Table PagamentoFatura (
+    nrFatura            Integer,
+    designacao          Varchar(30),
+    Constraint pkPAgamentoFAturaNrFaturaDesignacao PRIMARY KEY (nrFatura,designacao)
+);
+Create Table TipoPagamento (
+    designacao          Varchar(30) Constraint  pkTipoPagamentoDesignacao   PRIMARY KEY
+);
+Create Table EstadoReserva (
+    descricao           Varchar(30) Constraint  okEstadoREservaDescricao    PRIMARY KEY
+);
+Create Table Manutencao (
+    numeroAndar         Integer,
+    numeroSequencial    Integer,
+    funcionarioNIF      Integer,
+    equipamento         Varchar(10),
+    data                Date,
+    estado              Varchar(10),
+    Constraint pkManutencao PRIMARY KEY (numeroAndar,numeroSequencial,funcionarioNIF)
+);
+Create Table Limpeza (
+    numeroAndar         Integer,
+    numeroSequencial    Integer,
+    funcionarioNIF      Integer,
+    Constraint pkLimpeza PRIMARY KEY (numeroAndar,numeroSequencial,funcionarioNIF)
+);
+Create Table Funcionario(
+    NIF      INTEGER     Constraint pkFuncionarioNIF             PRIMARY KEY,
+    nome                Varchar(50),
+    morada              Varchar(50),
+    telefone            Integer,
+    email               Varchar(50)
+);
+Create Table FuncionarioCamareira (
+    funcionarioNIF      INTEGER     Constraint pkFuncionarioCamareiraNIF             PRIMARY KEY
+);
+Create Table FuncionarioManutencao (
+    funcionarioNIF      INTEGER     Constraint pkFuncionarioManutencaoNIF             PRIMARY KEY,
+    telefoneServico     Integer,
+    chefeNIF            Integer
+);
+Create Table FuncionarioRestaurante (
+    funcionarioNIF      INTEGER     Constraint pkFuncionarioRestauranteNIF             PRIMARY KEY
+);
+Create Table FuncionarioRececao (
+    funcionarioNIF      INTEGER     Constraint pkFuncionarioRececaoNIF             PRIMARY KEY
+);
+
+ALTER TABLE Reserva ADD CONSTRAINT fkReservaNumeroAndarNumeroSequencial FOREIGN KEY (numeroAndar,numeroSequencial) REFERENCES Quarto (numeroAndar,numeroSequencial);
+--ALTER TABLE Reserva ADD CONSTRAINT fkEstado FOREIGN KEY () REFERENCES  ();
+ALTER TABLE Reserva ADD CONSTRAINT fkReservaClienteNIF FOREIGN KEY (ClienteNIF) REFERENCES Cliente (NIF);
+
+ALTER TABLE Quarto ADD CONSTRAINT fkQuartoNumeroAndar FOREIGN KEY (numeroAndar) REFERENCES Andar (numeroAndar);
+ALTER TABLE Quarto ADD CONSTRAINT fkQuartoTipoQuarto FOREIGN KEY (tipoQuarto) REFERENCES TipoQuarto (tipoQuarto);
+
+ALTER TABLE PrecoReserva ADD CONSTRAINT fkPrecoReservaTipoQuarto FOREIGN KEY (tipoQuarto) REFERENCES TipoQuarto (tipoQuarto);
+ALTER TABLE PrecoReserva ADD CONSTRAINT fkPrecoReservaNomeEpoca FOREIGN KEY (nomeEpoca) REFERENCES EpocaAno (nomeEpoca);
+
+ALTER TABLE Conta ADD CONSTRAINT fkContaNrConta FOREIGN KEY (codReserva) REFERENCES Reserva (codReserva);
+
+ALTER TABLE Consumos ADD CONSTRAINT fkConsumos FOREIGN KEY (nrConta) REFERENCES Conta (nrConta);
+
+ALTER TABLE Fatura ADD CONSTRAINT fkFaturaCodReserva FOREIGN KEY (codReserva) REFERENCES Reserva (codReserva);
+
+ALTER TABLE PagamentoFatura ADD CONSTRAINT fkPagamentoFaturaNrFatura FOREIGN KEY (nrFatura) REFERENCES Fatura (nrFatura);
+ALTER TABLE PagamentoFatura ADD CONSTRAINT fkPagamentoFaturaDesignacao FOREIGN KEY (designacao) REFERENCES TipoPagamento (designacao);
+
+ALTER TABLE Limpeza ADD CONSTRAINT fkLimpezaNumeroAndarNumeroSequencial FOREIGN KEY (numeroAndar,numeroSequencial) REFERENCES Quarto (numeroAndar,numeroSequencial);
+ALTER TABLE Limpeza ADD CONSTRAINT fkLimpezaFuncionarioNIF FOREIGN KEY (funcionarioNIF) REFERENCES Funcionario (NIF);
+
+ALTER TABLE Manutencao ADD CONSTRAINT fkMAnutencaoNumeroAndarNumeroSequencial FOREIGN KEY (numeroAndar,numeroSequencial) REFERENCES Quarto (numeroAndar,numeroSequencial);
+ALTER TABLE Manutencao ADD CONSTRAINT fkManutencaoFuncionarioNIF FOREIGN KEY (funcionarioNIF) REFERENCES Funcionario (NIF);
+
+ALTER TABLE FuncionarioCamareira ADD CONSTRAINT fkCamareiraFuncionarioNIF FOREIGN KEY (funcionarioNIF) REFERENCES Funcionario (NIF);
+
+ALTER TABLE FuncionarioManutencao ADD CONSTRAINT fkFuncionarioManutencaoFuncionarioNIF FOREIGN KEY (funcionarioNIF) REFERENCES Funcionario (NIF);
+ALTER TABLE FuncionarioManutencao ADD CONSTRAINT fkFuncionarioManutencaoChefeNIF FOREIGN KEY (ChefeNIF) REFERENCES FuncionarioManutencao (funcionarioNIF);
+
+ALTER TABLE FuncionarioRestaurante ADD CONSTRAINT fkFuncionarioRestauranteFuncionarioNIF FOREIGN KEY (funcionarioNIF) REFERENCES Funcionario (NIF);
+
+ALTER TABLE FuncionarioRececao ADD CONSTRAINT fkFuncionarioRececaoFuncionarioNIF FOREIGN KEY (funcionarioNIF) REFERENCES Funcionario (NIF);
