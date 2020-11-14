@@ -106,8 +106,7 @@ Create Table Manutencao (
     numeroSequencial    Integer Constraint nnManutancaoNrSequencial      NOT NULL,
     funcionarioNIF      Integer Constraint nnManutancaoFuncionarioNIF    NOT NULL,
     equipamento         Varchar(10) Constraint nnManutancaoEquipamento   NOT NULL,
-    data                Timestamp Constraint nnManutancaoData            NOT NULL,
-    estado              Varchar(10) Constraint nnManutancaoEstado        NOT NULL,
+    data                Timestamp,
     Constraint pkManutencao PRIMARY KEY (numeroAndar,numeroSequencial,funcionarioNIF,data)
 );
 Create Table Limpeza (
