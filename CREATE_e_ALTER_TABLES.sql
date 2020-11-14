@@ -102,12 +102,13 @@ Create Table EstadoReserva (
     descricao           Varchar(30) Constraint  pkEstadoReservaDescricao    PRIMARY KEY
 );
 Create Table Manutencao (
+    idManutencao        Integer GENERATED ALWAYS AS IDENTITY Constraint pkManutencao PRIMARY KEY,
     numeroAndar         Integer Constraint nnManutancaoNrAndar           NOT NULL,
     numeroSequencial    Integer Constraint nnManutancaoNrSequencial      NOT NULL,
     funcionarioNIF      Integer Constraint nnManutancaoFuncionarioNIF    NOT NULL,
-    equipamento         Varchar(10) Constraint nnManutancaoEquipamento   NOT NULL,
+    equipamento         Varchar(50) Constraint nnManutancaoEquipamento   NOT NULL,
     data                Timestamp,
-    Constraint pkManutencao PRIMARY KEY (numeroAndar,numeroSequencial,funcionarioNIF,data)
+    Constraint check_manutencao UNIQUE (numeroAndar, numeroSequencial, funcionarioNIF, data)
 );
 Create Table Limpeza (
     numeroAndar         Integer Constraint nnLimpezaNrAndar         NOT NULL,
