@@ -25,17 +25,19 @@ Create Table Reserva (
     dataEntrada         Date Constraint nnReservaDataEntrada         NOT NULL,
     dataSaida           Date Constraint nnReservaDataSaida           NOT NULL,
     tipoQuarto          Varchar(10) Constraint nnReservaTipoQuarto   NOT NULL,
-    dataReserva         Date Constraint nnReservaDataReserva         NOT NULL,
+    dataReserva         Timestamp Constraint nnReservaDataReserva         NOT NULL,
     numeroPessoas       Integer Constraint nnReservaNrPessoas        NOT NULL,
     dataCancelamento    Date,
     custoCancelamento   Integer,
     numeroAndar         Integer Constraint nnReservaNrAndar         NOT NULL,
     numeroSequencial    Integer Constraint nnReservaNrSequencial    NOT NULL,
-    estado              Varchar(30) Constraint nnReservaEstado      NOT NULL,
+    estado              Varchar(30) DEFAULT 'reservada',
     clienteNif          Integer Constraint nnReservaClienteNIF      NOT NULL,
     CONSTRAINT ck_datas CHECK(dataSaida > dataEntrada),
     CONSTRAINT ck_entrada UNIQUE(dataEntrada, numeroAndar, numeroSequencial),
-    CONSTRAINT ck_saida UNIQUE(dataSaida, numeroAndar, numeroSequencial)
+    CONSTRAINT ck_saida UNIQUE(dataSaida, numeroAndar, numeroSequencial),
+    CONSTRAINT ck_dataReserva CHECK(dataReserva < dataEntrada),
+    CONSTRAINT ck_cliente UNIQUE(dataEntrada, clienteNif)
 );
 
 Create Table Quarto (
@@ -76,12 +78,10 @@ Create Table Consumos (
 );
 Create Table Cliente (
     NIF                 Integer     Constraint pkClienteNIF                 PRIMARY KEY,
-                                    Constraint check_NIF    check(REGEXP_LIKE(NIF, '^[0-9]{9}$')),
+                                    Constraint check_NIF    check(REGEXP_LIKE(NIF, '^\d{9}$')),
     nome                Varchar(50) Constraint nnClienteNome                NOT NULL,
-    email               Varchar(50) Constraint nnClienteEmail               NOT NULL,
-                                    Constraint check_email check(REGEXP_LIKE(email, '@{1}')),
-    telefone            Integer     Constraint nnClienteTelefone            NOT NULL,
-                                    Constraint check_telefone    check(REGEXP_LIKE(telefone, '^[0-9]{9}$')),
+    email               Varchar(50) Constraint check_email check(REGEXP_LIKE(email, '@{1}')),
+    telefone            Integer     Constraint check_telefone    check(REGEXP_LIKE(telefone, '^\d{9}$')),
     localidade          Varchar(50) Constraint nnClienteLocalidade          NOT NULL,
     concelho            Varchar(50) Constraint nnClienteConcelho            NOT NULL
 );
@@ -119,32 +119,32 @@ Create Table Limpeza (
 );
 Create Table Funcionario(
     NIF      INTEGER    Constraint pkFuncionarioNIF                PRIMARY KEY,
-                        Constraint check_NIF_funcionario            check(REGEXP_LIKE(NIF, '^[0-9]{9}$')),
+                        Constraint check_NIF_funcionario            check(REGEXP_LIKE(NIF, '^\d{9}$')),
     nome                Varchar(50) Constraint nnFuncionarioNome    NOT NULL,
     morada              Varchar(50),
     telefone            Integer Constraint nnFuncionarioTelefone    NOT NULL,
-                                Constraint check_telefone_funcionario   check(REGEXP_LIKE(telefone, '^[0-9]{9}$')),
+                                Constraint check_telefone_funcionario   check(REGEXP_LIKE(telefone, '^\d{9}$')),
     email               Varchar(50) Constraint nnFuncionarioEmail   NOT NULL,
                                     Constraint check_email_funcionario check(REGEXP_LIKE(email, '@{1}'))
 );
 Create Table FuncionarioCamareira (
     funcionarioNIF      INTEGER     Constraint pkFuncionarioCamareiraNIF             PRIMARY KEY,
-                                    Constraint check_NIF_camareira          check(REGEXP_LIKE(funcionarioNIF, '^[0-9]{9}$'))
+                                    Constraint check_NIF_camareira          check(REGEXP_LIKE(funcionarioNIF, '^\d{9}$'))
 );
 Create Table FuncionarioManutencao (
     funcionarioNIF      INTEGER     Constraint pkFuncionarioManutencaoNIF             PRIMARY KEY,
-                                    Constraint check_NIF_manutencao          check(REGEXP_LIKE(funcionarioNIF, '^[0-9]{9}$')),
+                                    Constraint check_NIF_manutencao          check(REGEXP_LIKE(funcionarioNIF, '^\d{9}$')),
     telefoneServico     Integer     Constraint nnFuncionarioManutencaoTelefone        NOT NULL,
-                                    Constraint check_telefone_manutencao   check(REGEXP_LIKE(telefoneServico, '^[0-9]{9}$')),
+                                    Constraint check_telefone_manutencao   check(REGEXP_LIKE(telefoneServico, '^\d{9}$')),
     chefeNIF            Integer
 );
 Create Table FuncionarioRestaurante (
     funcionarioNIF      INTEGER     Constraint pkFuncionarioRestauranteNIF             PRIMARY KEY,
-                                     Constraint check_NIF_restaurante         check(REGEXP_LIKE(funcionarioNIF, '^[0-9]{9}$'))
+                                     Constraint check_NIF_restaurante         check(REGEXP_LIKE(funcionarioNIF, '^\d{9}$'))
 );
 Create Table FuncionarioRececao (
     funcionarioNIF      INTEGER     Constraint pkFuncionarioRececaoNIF             PRIMARY KEY,
-                                    Constraint check_NIF_rececao        check(REGEXP_LIKE(funcionarioNIF, '^[0-9]{9}$'))
+                                    Constraint check_NIF_rececao        check(REGEXP_LIKE(funcionarioNIF, '^\d{9}$'))
 );
 
 ALTER TABLE Reserva ADD CONSTRAINT fkReservaNumeroAndarNumeroSequencial FOREIGN KEY (numeroAndar,numeroSequencial) REFERENCES Quarto (numeroAndar,numeroSequencial);
