@@ -9,6 +9,10 @@ INSERT INTO andar VALUES (3, 'terceiro');
 INSERT INTO andar VALUES (4, 'quarto');
 INSERT INTO andar VALUES (5, 'quinto');
 
+INSERT INTO epocaAno VALUES ('baixa', '2020-01-01','2020-05-31');
+INSERT INTO epocaAno VALUES ('media', '2020-10-01','2020-12-31');
+INSERT INTO epocaAno VALUES ('alta', '2020-06-01','2020-09-30');
+
 INSERT INTO cliente VALUES (111111111, 'AAA', NULL, NULL, 'Local1', 'Concelho1');
 INSERT INTO cliente VALUES (222222222, 'AAA', NULL, NULL, 'Local1', 'Concelho1');
 INSERT INTO cliente VALUES (333333333, 'BBB', NULL, NULL, 'Local2', 'Concelho1');
@@ -19,14 +23,232 @@ INSERT INTO cliente VALUES (777777777, 'José Silva', 'josesilvadealer@gmail.com'
 INSERT INTO cliente VALUES (888888888, 'José Silva', 'josesilvanotdealer@gmail.com', 912121211, 'Ermesinde', 'Valongo');
 INSERT INTO cliente VALUES (999999999, 'Marco Silva', 'marcosilvadealer@gmail.com', 912121213, 'Ramadas', 'Vila Real');
 
+-- Quartos --
+--1º Andar
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
+
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 3, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
+
+--2º Andar
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
+
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
+
+--3º Andar
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
+
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
+
+--4º Andar
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+
+--5º Andar
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+
 
 INSERT INTO estadoReserva VALUES ('reservada');
 INSERT INTO estadoReserva VALUES ('cancelada');

@@ -68,5 +68,10 @@ select r.numeroAndar, r.numeroSequencial-- ,r.codReserva
 from reserva r;
 */
 
-
-
+--Parte III --
+--a)
+select a.nome as ANDAR,q.numeroSequencial,q.tipoQuarto from andar a
+inner join Quarto q on a.numeroAndar=q.numeroAndar
+where q.tipoQuarto not like 'single' and (select count(r.numeroSequencial) from Reserva r
+                                          where q.numeroSequencial=r.numeroSequencial and r.estado!='cancelada')>2
+order by q.numeroSequencial;
