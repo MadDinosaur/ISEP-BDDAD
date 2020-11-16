@@ -70,8 +70,10 @@ from reserva r;
 
 --Parte III --
 --a)
+with tabelaCount as (select count(r.numeroSequencial) as countQuartos from Reserva r
+           Inner join quarto q on q.numeroSequencial=r.numeroSequencial 
+           where r.estado!='cancelada')
 select a.nome as ANDAR,q.numeroSequencial,q.tipoQuarto from andar a
 inner join Quarto q on a.numeroAndar=q.numeroAndar
-where q.tipoQuarto not like 'single' and (select count(r.numeroSequencial) from Reserva r
-                                          where q.numeroSequencial=r.numeroSequencial and r.estado!='cancelada')>2
-order by q.numeroSequencial;
+group by a.nome,q.numeroSequencial,q.tipoQuarto
+having max(q.numeroSequencial) in (select max(countQuartos) from tabelaCount);
