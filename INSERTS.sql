@@ -15,6 +15,9 @@ INSERT INTO cliente VALUES (333333333, 'BBB', NULL, NULL, 'Local2', 'Concelho1')
 INSERT INTO cliente VALUES (444444444, 'CCC', NULL, NULL, 'Local3', 'Concelho1');
 INSERT INTO cliente VALUES (555555555, 'DDD', NULL, NULL, 'Local1', 'Concelho2');
 INSERT INTO cliente VALUES (666666666, 'EEE', NULL, NULL, 'Local2', 'Concelho2');
+INSERT INTO cliente VALUES (777777777, 'José Silva', 'josesilvadealer@gmail.com', 912121212, 'Ramadas', 'Vila Real');
+INSERT INTO cliente VALUES (888888888, 'José Silva', 'josesilvanotdealer@gmail.com', 912121211, 'Ermesinde', 'Valongo');
+INSERT INTO cliente VALUES (999999999, 'Marco Silva', 'marcosilvadealer@gmail.com', 912121213, 'Ramadas', 'Vila Real');
 
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
@@ -47,6 +50,20 @@ VALUES ('2020-10-15', '2020-10-14', 'single', '2020-05-15', 1, 1, 1, 111111111);
 INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
 VALUES ('2020-10-15', '2020-10-17', 'single', '2020-05-15', 1, 1, 1, 111111111);
 
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-09-23', '2020-09-25', 'single', '2020-08-15', 1, 1, 1, 777777777);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-10-15', '2020-10-17', 'twin', '2020-05-15', 1, 1, 2, 777777777);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-06-23', '2020-06-25', 'single', '2020-02-15', 1, 1, 1, 888888888);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-05-16', '2020-05-17', 'twin', '2020-02-15', 1, 1, 2, 888888888);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-06-26', '2020-06-27', 'single', '2020-02-15', 1, 1, 1, 999999999);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-05-18', '2020-05-19', 'twin', '2020-02-15', 1, 1, 2, 999999999);
+
+
 INSERT INTO funcionario VALUES (100000000, 'AAA', 'm1', 111111111, 'aaa@mail.com');
 INSERT INTO funcionario VALUES (200000000, 'BBB', 'm2', 222222222, 'BBB@mail.com');
 INSERT INTO funcionario VALUES (300000000, 'CCC', 'm3', 333333333, 'CCC@mail.com');
@@ -68,3 +85,10 @@ INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamen
 INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 4, 400000000, 'ar condicionado','2020-11-13 16:00:00');
 INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (3, 7, 100000000, 'forno', '2020-10-02 08:00:00');
 INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (1, 1, 300000000, 'forno', '2020-10-02 08:00:00');
+
+insert INTO fatura (codReserva, total) 
+values ((select codReserva from reserva where dataSaida < CURRENT_TIMESTAMP and clienteNif=777777777 and numeroSequencial=2), 125);
+
+update reserva 
+set estado = 'finalizada'
+where dataSaida < CURRENT_TIMESTAMP and clienteNif=777777777 and numeroSequencial=2;
