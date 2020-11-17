@@ -311,6 +311,39 @@ INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamen
 insert INTO fatura (codReserva, total) 
 values ((select codReserva from reserva where dataSaida < CURRENT_TIMESTAMP and clienteNif=777777777 and numeroSequencial=2), 125);
 
-update reserva 
-set estado = 'finalizada'
-where dataSaida < CURRENT_TIMESTAMP and clienteNif=777777777 and numeroSequencial=2;
+/*ATRIBUIÇÃO AUTOMÁTICA DE QUARTOS DISPONÍVEIS ÀS RESERVAS*/
+UPDATE reserva r1
+SET numeroAndar = 
+(SELECT numeroAndar FROM (
+/*QUERY COM OS QUARTOS NÃO RESERVADOS DO TIPO E LOTAÇÃO ADEQUADOS*/
+SELECT numeroAndar, numeroSequencial
+FROM quarto
+WHERE tipoQuarto = r1.tipoQuarto
+AND lotacaoMax >= r1.numeroPessoas
+MINUS (
+/*QUERY COM OS QUARTOS JÁ RESERVADOS*/
+SELECT numeroAndar, numeroSequencial
+FROM reserva
+WHERE (dataEntrada <= r1.dataEntrada
+  AND dataSaida >= r1.dataEntrada)
+   OR (dataEntrada <= r1.dataSaida
+  AND dataSaida >= r1.dataSaida)
+  )
+) WHERE ROWNUM = 1),
+numeroSequencial  = (
+SELECT numeroSequencial FROM (
+/*QUERY COM OS QUARTOS NÃO RESERVADOS DO TIPO E LOTAÇÃO ADEQUADOS*/
+SELECT numeroAndar, numeroSequencial
+FROM quarto
+WHERE tipoQuarto = r1.tipoQuarto
+AND lotacaoMax >= r1.numeroPessoas
+MINUS (
+/*QUERY COM OS QUARTOS JÁ RESERVADOS*/
+SELECT numeroAndar, numeroSequencial
+FROM reserva
+WHERE (dataEntrada <= r1.dataEntrada
+  AND dataSaida >= r1.dataEntrada)
+   OR (dataEntrada <= r1.dataSaida
+  AND dataSaida >= r1.dataSaida)
+  )
+) WHERE ROWNUM = 1);

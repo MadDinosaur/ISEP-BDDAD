@@ -29,13 +29,13 @@ Create Table Reserva (
     numeroPessoas       Integer Constraint nnReservaNrPessoas        NOT NULL,
     dataCancelamento    Date,
     custoCancelamento   Integer,
-    numeroAndar         Integer Constraint nnReservaNrAndar         NOT NULL,
-    numeroSequencial    Integer Constraint nnReservaNrSequencial    NOT NULL,
+    numeroAndar         Integer DEFAULT NULL,
+    numeroSequencial    Integer DEFAULT NULL,
     estado              Varchar(30) DEFAULT 'reservada',
     clienteNif          Integer Constraint nnReservaClienteNIF      NOT NULL,
     CONSTRAINT ck_datas CHECK(dataSaida > dataEntrada),
-    CONSTRAINT ck_entrada UNIQUE(dataEntrada, numeroAndar, numeroSequencial),
-    CONSTRAINT ck_saida UNIQUE(dataSaida, numeroAndar, numeroSequencial),
+    /*CONSTRAINT ck_entrada UNIQUE(dataEntrada, numeroAndar, numeroSequencial),
+    CONSTRAINT ck_saida UNIQUE(dataSaida, numeroAndar, numeroSequencial),*/
     CONSTRAINT ck_dataReserva CHECK(dataReserva < dataEntrada),
     CONSTRAINT ck_cliente UNIQUE(dataEntrada, clienteNif)
 );
