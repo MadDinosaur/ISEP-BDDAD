@@ -7,6 +7,7 @@ DROP TABLE PrecoReserva             CASCADE CONSTRAINTS PURGE;
 DROP TABLE EpocaAno                 CASCADE CONSTRAINTS PURGE;
 DROP TABLE Conta                    CASCADE CONSTRAINTS PURGE;
 DROP TABLE Consumos                 CASCADE CONSTRAINTS PURGE;
+drop table produto                  CASCADE CONSTRAINTS PURGE;
 DROP TABLE Cliente                  CASCADE CONSTRAINTS PURGE;
 DROP TABLE Fatura                   CASCADE CONSTRAINTS PURGE;
 DROP TABLE PagamentoFatura          CASCADE CONSTRAINTS PURGE;
@@ -33,6 +34,8 @@ Create Table Reserva (
     numeroSequencial    Integer DEFAULT NULL,
     estado              Varchar(30) DEFAULT 'reservada',
     clienteNif          Integer Constraint nnReservaClienteNIF      NOT NULL,
+    nomeEpoca            Varchar(30) default null,
+    
     CONSTRAINT ck_datas CHECK(dataSaida > dataEntrada),
     /*CONSTRAINT ck_entrada UNIQUE(dataEntrada, numeroAndar, numeroSequencial),
     CONSTRAINT ck_saida UNIQUE(dataSaida, numeroAndar, numeroSequencial),*/
@@ -57,7 +60,8 @@ Create Table TipoQuarto (
 Create Table PrecoReserva(
     tipoQuarto          Varchar(10) Constraint nnPrecoReservaTipoQuarto NOT NULL,
     nomeEpoca           Varchar(10) Constraint nnPrecoReservaNomeEpoca  NOT NULL,
-    Constraint pkPrecoReservaTipoQuartoNomeEpoca    PRIMARY KEY (tipoQuarto,nomeEpoca)
+    preco               Integer     Constraint nnPrecoReservaPreco      not null, 
+    Constraint pkPrecoReservaTipoQuartoNomeEpocaCodReserva    PRIMARY KEY (tipoQuarto,nomeEpoca)
 );
 Create Table EpocaAno (
     nomeEpoca           Varchar(10)     Constraint pkEpocaAnoNomeEpoca          PRIMARY KEY,
@@ -71,10 +75,15 @@ Create Table Conta (
     codReserva          Integer     Constraint nnContaCodReserva            NOT NULL
 );
 Create Table Consumos (
-    dataConsumos        Date        Constraint pkConsumosDataConsumos       PRIMARY KEY,
-    produto             Varchar(30) Constraint nnConsumosProduto            NOT NULL,     
-    custo               Integer     Constraint nnConsumosCusto              NOT NULL,
-    nrConta             Integer     Constraint nnConsumosNrConta            NOT NULL
+    dataConsumos        Date        Constraint nnConsumosDataConsumos       not null,
+    idProduto           INTEGER     constraint nnConsumosIdProduto          not null,
+    nrConta             Integer     Constraint nnConsumosNrConta            NOT NULL,
+    constraint pkConsumosNrContaIdProduto   PRIMARY KEY(nrConta,idProduto)
+);
+Create Table Produto (
+    idProduto           INTEGER  GENERATED ALWAYS AS IDENTITY   Constraint pkProdutoIdProduto           PRIMARY KEY,
+    produto             VARCHAR(30) constraint nnProdutoproduto             not null,
+    custo               Integer     constraint nnProdutoCusto               not null
 );
 Create Table Cliente (
     NIF                 Integer     Constraint pkClienteNIF                 PRIMARY KEY,
@@ -150,6 +159,8 @@ Create Table FuncionarioRececao (
 ALTER TABLE Reserva ADD CONSTRAINT fkReservaNumeroAndarNumeroSequencial FOREIGN KEY (numeroAndar,numeroSequencial) REFERENCES Quarto (numeroAndar,numeroSequencial);
 ALTER TABLE Reserva ADD CONSTRAINT fkEstado FOREIGN KEY (estado) REFERENCES  EstadoReserva(descricao);
 ALTER TABLE Reserva ADD CONSTRAINT fkReservaClienteNIF FOREIGN KEY (ClienteNIF) REFERENCES Cliente (NIF);
+ALTER TABLE Reserva ADD CONSTRAINT fkReservaEpocaAno FOREIGN KEY (TipoQuarto,nomeEpoca) REFERENCES PrecoReserva (TipoQuarto,nomeEpoca);
+
 
 ALTER TABLE Quarto ADD CONSTRAINT fkQuartoNumeroAndar FOREIGN KEY (numeroAndar) REFERENCES Andar (numeroAndar);
 ALTER TABLE Quarto ADD CONSTRAINT fkQuartoTipoQuarto FOREIGN KEY (tipoQuarto) REFERENCES TipoQuarto (tipoQuarto);
@@ -159,7 +170,8 @@ ALTER TABLE PrecoReserva ADD CONSTRAINT fkPrecoReservaNomeEpoca FOREIGN KEY (nom
 
 ALTER TABLE Conta ADD CONSTRAINT fkContaNrConta FOREIGN KEY (codReserva) REFERENCES Reserva (codReserva);
 
-ALTER TABLE Consumos ADD CONSTRAINT fkConsumos FOREIGN KEY (nrConta) REFERENCES Conta (nrConta);
+ALTER TABLE Consumos ADD CONSTRAINT fkConsumosNrConta FOREIGN KEY (nrConta) REFERENCES Conta (nrConta);
+ALTER TABLE Consumos ADD CONSTRAINT fkConsumosIdProduto FOREIGN KEY (idProduto) REFERENCES Produto (idProduto);
 
 ALTER TABLE Fatura ADD CONSTRAINT fkFaturaCodReserva FOREIGN KEY (codReserva) REFERENCES Reserva (codReserva);
 

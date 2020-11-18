@@ -13,6 +13,22 @@ INSERT INTO epocaAno VALUES ('baixa', '2020-01-01','2020-05-31');
 INSERT INTO epocaAno VALUES ('media', '2020-10-01','2020-12-31');
 INSERT INTO epocaAno VALUES ('alta', '2020-06-01','2020-09-30');
 
+insert into precoReserva values ('single', 'baixa',50);
+insert into precoReserva values ('single', 'media',67);
+insert into precoReserva values ('single', 'alta',100);
+
+insert into precoReserva values ('twin', 'baixa',70);
+insert into precoReserva values ('twin', 'media',93);
+insert into precoReserva values ('twin', 'alta',140);
+
+insert into precoReserva values ('superior', 'baixa',90);
+insert into precoReserva values ('superior', 'media',120);
+insert into precoReserva values ('superior', 'alta',180);
+
+insert into precoReserva values ('suite', 'baixa',110);
+insert into precoReserva values ('suite', 'media',146);
+insert into precoReserva values ('suite', 'alta',220);
+
 INSERT INTO cliente VALUES (111111111, 'AAA', NULL, NULL, 'Local1', 'Concelho1');
 INSERT INTO cliente VALUES (222222222, 'AAA', NULL, NULL, 'Local1', 'Concelho1');
 INSERT INTO cliente VALUES (333333333, 'BBB', NULL, NULL, 'Local2', 'Concelho1');
@@ -255,38 +271,37 @@ INSERT INTO estadoReserva VALUES ('cancelada');
 INSERT INTO estadoReserva VALUES ('ativa');
 INSERT INTO estadoReserva VALUES ('finalizada');
 
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'single', '2020-09-30', 1, 1, 1, 111111111);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-04-30', 2, 1, 2, 111111111); -- deve falhar
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-04-30', 2, 1, 2, 222222222);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-02', '2020-10-03', 'twin', '2020-06-25', 2, 1, 2, 333333333);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-01', '2020-10-03', 'superior', '2020-04-01', 3, 3, 7, 444444444);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-09-30', 2, 1, 3, 555555555);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-15', '2020-10-14', 'single', '2020-05-15', 1, 1, 1, 111111111); -- deve falhar
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-15', '2020-10-17', 'single', '2020-05-15', 1, 1, 1, 111111111);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-01', '2020-10-04', 'single', '2020-09-30', 1, 1, 111111111);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-04-30', 2, 1, 111111111); -- deve falhar
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-04-30', 2, 1, 222222222);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-02', '2020-10-03', 'twin', '2020-06-25', 2, 1, 333333333);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-01', '2020-10-03', 'superior', '2020-04-01', 3, 3, 444444444);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-09-30', 2, 1, 555555555);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-15', '2020-10-14', 'single', '2020-05-15', 1, 1, 111111111); -- deve falhar
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-15', '2020-10-17', 'single', '2020-05-15', 1, 1, 111111111);
 
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-09-23', '2020-09-25', 'single', '2020-08-15', 1, 1, 1, 777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-10-15', '2020-10-17', 'twin', '2020-05-15', 1, 1, 2, 777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-06-23', '2020-06-25', 'single', '2020-02-15', 1, 1, 1, 888888888);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-05-16', '2020-05-17', 'twin', '2020-02-15', 1, 1, 2, 888888888);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-06-26', '2020-06-27', 'single', '2020-02-15', 1, 1, 1, 999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-05-18', '2020-05-19', 'twin', '2020-02-15', 1, 1, 2, 999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
-VALUES ('2020-03-18', '2020-09-19', 'single', '2020-02-15', 1, 1, 1, 999999999);
-
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-09-23', '2020-09-25', 'single', '2020-08-15', 1, 1, 777777777);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-10-15', '2020-10-17', 'twin', '2020-05-15', 1, 1, 777777777);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-06-23', '2020-06-25', 'single', '2020-02-15', 1, 1, 888888888);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-05-16', '2020-05-17', 'twin', '2020-02-15', 1, 1, 888888888);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-06-26', '2020-06-27', 'single', '2020-02-15', 1, 1, 999999999);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-05-18', '2020-05-19', 'twin', '2020-02-15', 1, 1, 999999999);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
+VALUES ('2020-03-18', '2020-09-19', 'single', '2020-02-15', 1, 1, 999999999);
 
 INSERT INTO funcionario VALUES (100000000, 'AAA', 'm1', 111111111, 'aaa@mail.com');
 INSERT INTO funcionario VALUES (200000000, 'BBB', 'm2', 222222222, 'BBB@mail.com');
@@ -352,7 +367,10 @@ WHERE (dataEntrada <= r1.dataEntrada
    OR (dataEntrada <= r1.dataSaida
   AND dataSaida >= r1.dataSaida)
   )
-) WHERE ROWNUM = 1);
+) WHERE ROWNUM = 1),
+nomeEpoca=(
+select nomeEpoca from EpocaAno
+where dataInicio<r1.dataEntrada and r1.dataEntrada<dataFim);
 
 insert into funcionarioCamareira values (500000000);
 insert into funcionarioCamareira values (600000000);
@@ -372,3 +390,23 @@ insert into limpeza values (1,2, 600000000, '2020-10-05 19:00:00');
 insert into limpeza values (1,2, 700000000, '2020-10-01 19:00:00');
 insert into limpeza values (1,1, 500000000, '2020-10-02 19:00:00');
 insert into limpeza values (1,11, 500000000, '2020-10-03 19:00:00');
+
+-- PRODUTOS --
+--Bebidas
+insert into Produto (produto,custo) values ('Coca-Cola',5);
+insert into Produto (produto,custo) values ('Fanta',4);
+insert into Produto (produto,custo) values ('Champagne',30);
+insert into Produto (produto,custo) values ('Vinho Tinto',15);
+insert into Produto (produto,custo) values ('Àgua',2);
+insert into Produto (produto,custo) values ('Leite de Soja',6);
+insert into Produto (produto,custo) values ('Super Bock',5);
+insert into Produto (produto,custo) values ('Vinho Verde',13);
+insert into Produto (produto,custo) values ('Cidra',7);
+--Sncaks mini-bar
+insert into Produto (produto,custo) values ('Amendoins',3);
+insert into Produto (produto,custo) values ('Cajus',5);
+insert into Produto (produto,custo) values ('Lays',4);
+insert into Produto (produto,custo) values ('MMs',3);
+insert into Produto (produto,custo) values ('Chips Ahoy',5);
+insert into Produto (produto,custo) values ('Pipocas',6);
+insert into Produto (produto,custo) values ('Pretzels',8);
