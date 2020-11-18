@@ -17,7 +17,7 @@ AND c.NIF NOT IN (SELECT clienteNIF FROM reserva WHERE tipoQuarto LIKE 'suite');
 
 --Parte II
 
--- (b)
+-- (a)
 
 select nome, localidade, concelho
 from cliente c
@@ -67,6 +67,50 @@ where nome like 'José Silva' and concelho like 'Vila Real');
 select r.numeroAndar, r.numeroSequencial-- ,r.codReserva
 from reserva r;
 */
+
+-- (b)
+
+-- selecionar as limpezas dos últimos 6 meses
+select *
+from limpeza l
+where months_between(current_timestamp, l.data)<=6;
+
+--selecionar a média de estadia em cada quarto
+
+select avg(r.dataSaida - r.dataEntrada)
+from reserva r
+group by tipoQuarto;
+
+-- selecionar os quartos com mais tempo de estadia do que a média
+
+select numeroAndar, numeroSequencial
+from reserva r1
+where (r1.dataSaida-r1.dataEntrada) > (select avg(r2.dataSaida - r2.dataEntrada)
+from reserva r2
+group by tipoQuarto
+having r1.tipoQuarto=r2.tipoQuarto);
+
+-- selecionar nome camareira
+
+select nome
+from funcionario f, funcionarioCamareira fc
+where fc.funcionarioNIF in f.nif;
+
+-- solucao
+
+select nome
+from funcionario f, funcionarioCamareira fc, limpeza l
+where fc.funcionarioNIF in f.nif and fc.funcionarioNIF in l.funcionarioNIF and
+months_between(current_timestamp, l.data)<=6 and (l.numeroAndar, l.numeroSequencial) in (
+select r1.numeroAndar, r1.numeroSequencial
+from reserva r1
+where (r1.dataSaida-r1.dataEntrada) > (select avg(r2.dataSaida - r2.dataEntrada)
+from reserva r2
+group by tipoQuarto
+having r1.tipoQuarto=r2.tipoQuarto));
+
+
+
 
 --Parte III --
 --a)

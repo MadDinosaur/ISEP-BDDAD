@@ -284,6 +284,8 @@ INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPess
 VALUES ('2020-06-26', '2020-06-27', 'single', '2020-02-15', 1, 1, 1, 999999999);
 INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
 VALUES ('2020-05-18', '2020-05-19', 'twin', '2020-02-15', 1, 1, 2, 999999999);
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, numeroSequencial, clienteNIF)
+VALUES ('2020-03-18', '2020-09-19', 'single', '2020-02-15', 1, 1, 1, 999999999);
 
 
 INSERT INTO funcionario VALUES (100000000, 'AAA', 'm1', 111111111, 'aaa@mail.com');
@@ -292,6 +294,10 @@ INSERT INTO funcionario VALUES (300000000, 'CCC', 'm3', 333333333, 'CCC@mail.com
 INSERT INTO funcionario VALUES (400000000, 'DDD', 'm4', 444444444, 'DDD@mail.com');
 INSERT INTO funcionario VALUES (500000000, 'EEE', 'm5', 555555555, 'EEE@mail.com');
 INSERT INTO funcionario VALUES (600000000, 'FFF', 'm6', 666666666, 'FFF@mail.com');
+INSERT INTO funcionario VALUES (700000000, 'GGG', 'm5', 777777777, 'GGG@mail.com');
+INSERT INTO funcionario VALUES (800000000, 'HHH', 'm6', 888888888, 'HHH@mail.com');
+INSERT INTO funcionario VALUES (900000000, 'III', 'm5', 999999999, 'III@mail.com');
+INSERT INTO funcionario VALUES (110000000, 'JJJ', 'm6', 110000000, 'JJJ@mail.com');
 
 INSERT INTO funcionarioManutencao VALUES (100000000, 111111111, NULL);
 INSERT INTO funcionarioManutencao VALUES (200000000, 222222222, 100000000);
@@ -347,3 +353,22 @@ WHERE (dataEntrada <= r1.dataEntrada
   AND dataSaida >= r1.dataSaida)
   )
 ) WHERE ROWNUM = 1);
+
+insert into funcionarioCamareira values (500000000);
+insert into funcionarioCamareira values (600000000);
+insert into funcionarioCamareira values (700000000);
+insert into funcionarioCamareira values (800000000);
+insert into funcionarioCamareira values (900000000);
+insert into funcionarioCamareira values (110000000);
+
+
+insert into limpeza values (1,11, 500000000, '2020-02-05 19:00:00');
+insert into limpeza values (1,11, 500000000, '2020-02-06 19:00:00');
+insert into limpeza values (1,11, 500000000, '2020-10-05 19:00:00');
+insert into limpeza values (1,2, 500000000, '2020-10-06 19:00:00');
+insert into limpeza values (1,3, 500000000, '2020-10-08 19:00:00');
+insert into limpeza values (1,11, 500000000, '2020-10-10 19:00:00');
+insert into limpeza values (1,2, 600000000, '2020-10-05 19:00:00');
+insert into limpeza values (1,2, 700000000, '2020-10-01 19:00:00');
+insert into limpeza values (1,1, 500000000, '2020-10-02 19:00:00');
+insert into limpeza values (1,11, 500000000, '2020-10-03 19:00:00');
