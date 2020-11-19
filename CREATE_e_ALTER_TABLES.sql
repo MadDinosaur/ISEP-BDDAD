@@ -1,4 +1,3 @@
-
 DROP TABLE Reserva                  CASCADE CONSTRAINTS PURGE;
 DROP TABLE Quarto                   CASCADE CONSTRAINTS PURGE;
 DROP TABLE Andar                    CASCADE CONSTRAINTS PURGE;
@@ -26,7 +25,7 @@ Create Table Reserva (
     dataEntrada         Date Constraint nnReservaDataEntrada         NOT NULL,
     dataSaida           Date Constraint nnReservaDataSaida           NOT NULL,
     tipoQuarto          Varchar(10) Constraint nnReservaTipoQuarto   NOT NULL,
-    dataReserva         Timestamp Constraint nnReservaDataReserva         NOT NULL,
+    dataReserva         Timestamp Constraint nnReservaDataReserva    NOT NULL,
     numeroPessoas       Integer Constraint nnReservaNrPessoas        NOT NULL,
     dataCancelamento    Date,
     custoCancelamento   Integer,
@@ -34,12 +33,9 @@ Create Table Reserva (
     numeroSequencial    Integer DEFAULT NULL,
     estado              Varchar(30) DEFAULT 'reservada',
     clienteNif          Integer Constraint nnReservaClienteNIF      NOT NULL,
-    nomeEpoca            Varchar(30) default null,
-    
-    CONSTRAINT ck_datas CHECK(dataSaida > dataEntrada),
-    /*CONSTRAINT ck_entrada UNIQUE(dataEntrada, numeroAndar, numeroSequencial),
-    CONSTRAINT ck_saida UNIQUE(dataSaida, numeroAndar, numeroSequencial),*/
-    CONSTRAINT ck_dataReserva CHECK(dataReserva < dataEntrada),
+    nomeEpoca           Varchar(30) default null,
+	CONSTRAINT ck_datas CHECK(dataSaida > dataEntrada),
+	CONSTRAINT ck_dataReserva CHECK(dataReserva < dataEntrada),
     CONSTRAINT ck_cliente UNIQUE(dataEntrada, clienteNif)
 );
 
@@ -60,7 +56,7 @@ Create Table TipoQuarto (
 Create Table PrecoReserva(
     tipoQuarto          Varchar(10) Constraint nnPrecoReservaTipoQuarto NOT NULL,
     nomeEpoca           Varchar(10) Constraint nnPrecoReservaNomeEpoca  NOT NULL,
-    preco               Integer     Constraint nnPrecoReservaPreco      not null, 
+    preco               Integer     Constraint nnPrecoReservaPreco      not null,
     Constraint pkPrecoReservaTipoQuartoNomeEpocaCodReserva    PRIMARY KEY (tipoQuarto,nomeEpoca)
 );
 Create Table EpocaAno (
@@ -70,9 +66,11 @@ Create Table EpocaAno (
     diaFim             Integer         Constraint nnEpocaAnoDiaFim             Not Null,
     mesFim              Integer         Constraint nnEpocaAnoMesFim             Not Null,
     CONSTRAINT ck_datas_epoca CHECK(mesFim > mesInicio or ( mesFim=mesInicio and diaFim>diaInicio)),
-    Constraint ckMesInicio Check(mesInicio<=12),
-    Constraint ckMesFim check(mesFim<=12),
-    Constraint ukEpocaAnoDiaMesInicio UNIQUE(diaInicio,mesInicio),
+    Constraint ck_mes_inicio Check(mesInicio<=12),
+    Constraint ck_mes_fim check(mesFim<=12),
+    Constraint ck_dia_inicio check(diaInicio <= 31 and diaInicio > 0),
+	Constraint ck_dia_fim check(diaFim <= 31 and diaFim > 0),
+	Constraint ukEpocaAnoDiaMesInicio UNIQUE(diaInicio,mesInicio),
     Constraint okEpocaAnoDiaMesFim UNIQUE(diaFim,mesFim)
 );
 Create Table Conta (
