@@ -65,14 +65,20 @@ Create Table PrecoReserva(
 );
 Create Table EpocaAno (
     nomeEpoca           Varchar(10)     Constraint pkEpocaAnoNomeEpoca          PRIMARY KEY,
-    dataInicio          Date            Constraint ukEpocaAnoDataInicio         UNIQUE,
-    dataFim             Date            Constraint ukEpocaAnoDataFim            UNIQUE,
-    CONSTRAINT ck_datas_epoca CHECK(dataFim > dataInicio)
+    diaInicio           Integer         Constraint nnEpocaAnoDiaInicio          Not Null,
+    mesInicio          Integer         Constraint nnEpocaAnoMesInicio          Not Null,
+    diaFim             Integer         Constraint nnEpocaAnoDiaFim             Not Null,
+    mesFim              Integer         Constraint nnEpocaAnoMesFim             Not Null,
+    CONSTRAINT ck_datas_epoca CHECK(mesFim > mesInicio or ( mesFim=mesInicio and diaFim>diaInicio)),
+    Constraint ckMesInicio Check(mesInicio<=12),
+    Constraint ckMesFim check(mesFim<=12),
+    Constraint ukEpocaAnoDiaMesInicio UNIQUE(diaInicio,mesInicio),
+    Constraint okEpocaAnoDiaMesFim UNIQUE(diaFim,mesFim)
 );
 Create Table Conta (
     nrConta             Integer     GENERATED ALWAYS AS IDENTITY Constraint pkContaNrConta               PRIMARY KEY,
-    dataAbertura        Date        Constraint nnContaDataAbertura          NOT NULL,
-    codReserva          Integer     Constraint nnContaCodReserva            NOT NULL
+    dataAbertura        Date        default null,
+    codReserva          Integer     default null
 );
 Create Table Consumos (
     dataConsumos        Date        Constraint nnConsumosDataConsumos       not null,

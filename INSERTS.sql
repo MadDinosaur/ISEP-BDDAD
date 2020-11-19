@@ -9,9 +9,9 @@ INSERT INTO andar VALUES (3, 'terceiro');
 INSERT INTO andar VALUES (4, 'quarto');
 INSERT INTO andar VALUES (5, 'quinto');
 
-INSERT INTO epocaAno VALUES ('baixa', '2020-01-01','2020-05-31');
-INSERT INTO epocaAno VALUES ('media', '2020-10-01','2020-12-31');
-INSERT INTO epocaAno VALUES ('alta', '2020-06-01','2020-09-30');
+INSERT INTO epocaAno VALUES ('baixa', 1,1,31,5);
+INSERT INTO epocaAno VALUES ('media', 1,10,31,12);
+INSERT INTO epocaAno VALUES ('alta', 1,6,30,9);
 
 insert into precoReserva values ('single', 'baixa',50);
 insert into precoReserva values ('single', 'media',67);
@@ -370,7 +370,10 @@ WHERE (dataEntrada <= r1.dataEntrada
 ) WHERE ROWNUM = 1),
 nomeEpoca=(
 select nomeEpoca from EpocaAno
-where dataInicio<r1.dataEntrada and r1.dataEntrada<dataFim);
+where (mesInicio<Extract(Month from r1.dataEntrada) or 
+    (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) 
+and (Extract(Month from r1.dataEntrada)<mesFim) or 
+    (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim));
 
 insert into funcionarioCamareira values (500000000);
 insert into funcionarioCamareira values (600000000);
@@ -410,3 +413,51 @@ insert into Produto (produto,custo) values ('MMs',3);
 insert into Produto (produto,custo) values ('Chips Ahoy',5);
 insert into Produto (produto,custo) values ('Pipocas',6);
 insert into Produto (produto,custo) values ('Pretzels',8);
+
+-- Contas --
+insert into Conta (codReserva) values (1);
+insert into Conta (codReserva) values (3);
+insert into Conta (codReserva) values (4);
+insert into Conta (codReserva) values (5);
+insert into Conta (codReserva) values (6);
+insert into Conta (codReserva) values (11);
+insert into Conta (codReserva) values (8);
+insert into Conta (codReserva) values (9);
+insert into Conta (codReserva) values (10);
+
+
+-- Consumos --
+--Ultimos 6 meses 11-5
+insert into Consumos values ('2020-10-02',1,1);
+insert into Consumos values ('2020-10-01',10,2);
+insert into Consumos values ('2020-10-16',6,9);
+insert into Consumos values ('2020-10-02',4,3);
+insert into Consumos values ('2020-10-03',13,1);
+insert into Consumos values ('2020-10-03',16,4);
+insert into Consumos values ('2020-10-15',1,9);
+insert into Consumos values ('2020-06-24',3,6);
+insert into Consumos values ('2020-10-15',2,7);
+insert into Consumos values ('2020-10-02',16,5);
+insert into Consumos values ('2020-10-17',2,9);
+insert into Consumos values ('2020-09-24',7,8);
+insert into Consumos values ('2020-10-01',12,2);
+insert into Consumos values ('2020-10-15',11,7);
+insert into Consumos values ('2020-10-03',5,5);
+insert into Consumos values ('2020-09-23',14,8);
+insert into Consumos values ('2020-10-03',12,3);
+insert into Consumos values ('2020-06-25',4,6);
+insert into Consumos values ('2020-05-16',10,9);--antes
+insert into Consumos values ('2020-10-02',16,2);
+
+--Antes dos ultimos 6 meses
+/*insert into Consumos values (1,1);
+insert into Consumos values (11,1);
+insert into Consumos values (9,6);
+insert into Consumos values (6,7);
+insert into Consumos values (12,4);*/ --ainda por fazer
+
+-- UPDATE da dataAbertura das contas
+UPDATE Conta c1
+set dataAbertura=(
+select min(csm.dataConsumos) from Consumos csm
+where csm.nrConta=c1.nrConta);
