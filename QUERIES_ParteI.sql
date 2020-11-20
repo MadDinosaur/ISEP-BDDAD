@@ -115,26 +115,28 @@ having r1.tipoQuarto=r2.tipoQuarto));
 --Parte III --
 --a)
 with tabelaCount as (select count(r.numeroSequencial) as countQuartos from Reserva r
-           Inner join quarto q on q.numeroSequencial=r.numeroSequencial and q.numeroAndar=r.numeroAndar
-           where r.estado!='cancelada')
+                     Inner join quarto q on q.numeroSequencial=r.numeroSequencial and q.numeroAndar=r.numeroAndar
+                     where r.estado!='cancelada')
 select a.nome as ANDAR,q.numeroSequencial,q.tipoQuarto from andar a
 inner join Quarto q on a.numeroAndar=q.numeroAndar
 group by a.nome,q.numeroSequencial,q.tipoQuarto
-having max(q.numeroSequencial) in (select max(countQuartos) from tabelaCount);
+having max(q.numeroSequencial) in (select max(countQuartos) from tabelaCount) 
+and q.numeroSequencial not in(select numeroSequencial from Reserva
+                              group by numeroSequencial,tipoQuarto 
+                              having count(numeroSequencial)<2 and tipoQuarto='single');
 
 --b)
-with totalConsumo as (select sum(custo) from Produto), --ainda por fazer
-countProdutos as (select count(idProduto) as contador from Consumos 
-                  where rowNum<=2
-                  order by 1)
+with countProdutos as (select count(idProduto) as contador from Consumos 
+                      where rowNum<=2
+                      order by 1)
 select c.nome from cliente c
 inner join Reserva r on r.clienteNIF=c.NIF
 inner join Conta ct on ct.codReserva=r.codReserva
 inner join Consumos csm on csm.nrConta=ct.nrConta
-where /*r.tipoQuarto='suite' and*/ r.nomeEpoca='alta' 
+where r.tipoQuarto='suite' and r.nomeEpoca='alta' and Extract(YEAR from r.dataEntrada)>=2019 
 group by c.nome,csm.idProduto
 having csm.idProduto in (select idProduto from Consumos 
                          group by idProduto
                          having count(idProduto) in (select contador from countProdutos))
-order by c.nome
-;
+order by (select sum(custo) from Produto 
+          where csm.idProduto=idProduto);
