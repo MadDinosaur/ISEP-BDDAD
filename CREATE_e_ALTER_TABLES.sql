@@ -67,7 +67,7 @@ Create Table EpocaAno (
     mesFim              Integer         Constraint nnEpocaAnoMesFim             Not Null,
     CONSTRAINT ck_datas_epoca CHECK(mesFim > mesInicio or ( mesFim=mesInicio and diaFim>diaInicio)),
     Constraint ck_inicio check(diaInicio <= EXTRACT(DAY FROM LAST_DAY(TO_DATE('2020' || TO_CHAR(mesInicio, '09') || '01', 'YYYYMMDD'))) and diaInicio > 0),
-	Constraint ck_fim check(diaFim <= EXTRACT(DAY FROM LAST_DAY(TO_DATE('2020' || TO_CHAR(mesFim, '09') || '01', 'YYYYMMDD'))) and diaFim> 0),
+    Constraint ck_fim check(diaFim <= EXTRACT(DAY FROM LAST_DAY(TO_DATE('2020' || TO_CHAR(mesFim, '09') || '01', 'YYYYMMDD'))) and diaFim> 0),
 	Constraint ukEpocaAnoDiaMesInicio UNIQUE(diaInicio, mesInicio),
     Constraint ukEpocaAnoDiaMesFim UNIQUE(diaFim, mesFim)
 );
