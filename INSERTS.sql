@@ -1,56 +1,24 @@
--- Tipo Quarto --
+-- Épocas do Ano --
+INSERT INTO epocaAno VALUES ('baixa', 1,1,31,5);
+INSERT INTO epocaAno VALUES ('media', 1,10,31,12);
+INSERT INTO epocaAno VALUES ('alta', 1,06,30,9);
+INSERT INTO epocaAno VALUES ('test_1', 01,10,01,01); -- deve falhar (data de inicio após data de fim)
+INSERT INTO epocaAno VALUES ('test_2', 01, 00, 30, 30); -- deve falhar (mês inválido)
+INSERT INTO epocaAno VALUES ('test_3', 31, 02, 01, 03); -- deve falhar (dia do mês inválido)
+
+-- Tipos de Quartos --
 INSERT INTO tipoQuarto VALUES ('single');
 INSERT INTO tipoQuarto VALUES ('twin');
 INSERT INTO tipoQuarto VALUES ('superior');
 INSERT INTO tipoQuarto VALUES ('suite');
 
--- Andar --
+-- Andares --
 INSERT INTO andar VALUES (1, 'primeiro');
 INSERT INTO andar VALUES (2, 'segundo');
 INSERT INTO andar VALUES (3, 'terceiro');
-INSERT INTO andar VALUES (4, 'quarto');
-INSERT INTO andar VALUES (5, 'quinto');
-
--- Epoca do Ano --
-INSERT INTO epocaAno VALUES ('baixa', 1,1,31,5);
-INSERT INTO epocaAno VALUES ('media', 1,10,31,12);
-INSERT INTO epocaAno VALUES ('alta', 1,6,30,9);
-
--- Preço de Reserva --
---Quarto Single
-insert into precoReserva values ('single', 'baixa',50);
-insert into precoReserva values ('single', 'media',67);
-insert into precoReserva values ('single', 'alta',100);
-
---Quarto Twin
-insert into precoReserva values ('twin', 'baixa',70);
-insert into precoReserva values ('twin', 'media',93);
-insert into precoReserva values ('twin', 'alta',140);
-
---Quarto Superior
-insert into precoReserva values ('superior', 'baixa',90);
-insert into precoReserva values ('superior', 'media',120);
-insert into precoReserva values ('superior', 'alta',180);
-
---Quarto Suite
-insert into precoReserva values ('suite', 'baixa',110);
-insert into precoReserva values ('suite', 'media',146);
-insert into precoReserva values ('suite', 'alta',220);
-
-
--- Cliente --
-INSERT INTO cliente VALUES (111111111, 'AAA', NULL, NULL, 'Local1', 'Concelho1');
-INSERT INTO cliente VALUES (222222222, 'AAA', NULL, NULL, 'Local1', 'Concelho1');
-INSERT INTO cliente VALUES (333333333, 'BBB', NULL, NULL, 'Local2', 'Concelho1');
-INSERT INTO cliente VALUES (444444444, 'CCC', NULL, NULL, 'Local3', 'Concelho1');
-INSERT INTO cliente VALUES (555555555, 'DDD', NULL, NULL, 'Local1', 'Concelho2');
-INSERT INTO cliente VALUES (666666666, 'EEE', NULL, NULL, 'Local2', 'Concelho2');
-INSERT INTO cliente VALUES (777777777, 'José Silva', 'josesilvadealer@gmail.com', 912121212, 'Ramadas', 'Vila Real');
-INSERT INTO cliente VALUES (888888888, 'José Silva', 'josesilvanotdealer@gmail.com', 912121211, 'Ermesinde', 'Valongo');
-INSERT INTO cliente VALUES (999999999, 'Marco Silva', 'marcosilvadealer@gmail.com', 912121213, 'Ramadas', 'Vila Real');
 
 -- Quartos --
---1º Andar
+-- 1º Andar -- Single --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
@@ -61,7 +29,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single')
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 1, 'single');
-
+-- 1º Andar -- Twin --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
@@ -72,7 +40,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 2, 'twin');
-
+-- 1º Andar -- Superior --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
@@ -83,7 +51,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 4, 'superior');
-
+-- 1º Andar -- Suite --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
@@ -94,8 +62,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (1, 5, 'suite');
-
---2º Andar
+-- 2º Andar -- Single --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
@@ -106,7 +73,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single')
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 1, 'single');
-
+-- 2º Andar -- Twin --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
@@ -117,7 +84,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 2, 'twin');
-
+-- 2º Andar -- Superior --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
@@ -128,7 +95,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 4, 'superior');
-
+-- 2º Andar -- Suite --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
@@ -139,8 +106,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (2, 5, 'suite');
-
---3º Andar
+-- 3º Andar -- Single --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
@@ -151,7 +117,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single')
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 1, 'single');
-
+-- 3º Andar -- Twin --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
@@ -162,7 +128,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 2, 'twin');
-
+-- 3º Andar -- Superior --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
@@ -173,7 +139,7 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 4, 'superior');
-
+-- 3º Andar -- Suite --
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
@@ -185,199 +151,320 @@ INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
 INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (3, 5, 'suite');
 
---4º Andar
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 1, 'single');
+-- Preços para Reservas --
+insert into precoReserva values ('single', 'baixa', 50);
+insert into precoReserva values ('single', 'media', 67);
+insert into precoReserva values ('single', 'alta', 100);
+insert into precoReserva values ('twin', 'baixa', 70);
+insert into precoReserva values ('twin', 'media', 93);
+insert into precoReserva values ('twin', 'alta', 140);
+insert into precoReserva values ('superior', 'baixa', 90);
+insert into precoReserva values ('superior', 'media', 120);
+insert into precoReserva values ('superior', 'alta', 180);
+insert into precoReserva values ('suite', 'baixa', 110);
+insert into precoReserva values ('suite', 'media', 146);
+insert into precoReserva values ('suite', 'alta', 220);
 
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 2, 'twin');
+-- Clientes --
+INSERT INTO cliente VALUES(100000001, 'Ana', 'Ana@email.com', NULL, 'Águeda', 'Aveiro');
+INSERT INTO cliente VALUES(100000002, 'Bárbara', NULL, NULL, 'Águeda', 'Aveiro');
+INSERT INTO cliente VALUES(100000003, 'Carla', 'Carla@email.com', NULL, 'Estarreja', 'Aveiro');
 
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 4, 'superior');
+INSERT INTO cliente VALUES(100000004, 'Diogo', 'Diogo@email.com', NULL, 'Mértola', 'Beja');
+INSERT INTO cliente VALUES(100000005, 'Eduardo', 'Eduardo@email.com', NULL, 'Odemira', 'Beja');
+INSERT INTO cliente VALUES(100000006, 'Filipe', 'Filipe@email.com', NULL, 'Serpa', 'Beja');
 
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (4, 5, 'suite');
+INSERT INTO cliente VALUES(100000007, 'Gustavo', 'Gustavo@email.com', NULL, 'Vila Flor', 'Bragança');
+INSERT INTO cliente VALUES(100000008, 'Hugo', 'Hugo@email.com', NULL, 'Vimioso', 'Bragança');
+INSERT INTO cliente VALUES(100000009, 'Igor', 'Igor@email.com', NULL, 'Vimioso', 'Bragança');
 
---5º Andar
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 1, 'single');
+INSERT INTO cliente VALUES(100000010, 'João', NULL, NULL, 'Covilhã', 'Castelo Branco');
+INSERT INTO cliente VALUES(100000011, 'Klaus', 'Klaus@email.com', NULL, 'Covilhã', 'Castelo Branco');
+INSERT INTO cliente VALUES(100000012, 'Luís', NULL, NULL, 'Covilhã', 'Castelo Branco');
 
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 2, 'twin');
+INSERT INTO cliente VALUES(100000013, 'Mariana', 'Mariana@email.com', NULL, 'Penacova', 'Coimbra');
+INSERT INTO cliente VALUES(100000014, 'Nuno', 'Nuno@email.com', NULL, 'Penela', 'Coimbra');
+INSERT INTO cliente VALUES(100000015, 'Óscar', NULL, NULL, 'Tábua', 'Coimbra');
 
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 4, 'superior');
+INSERT INTO cliente VALUES(100000016, 'Paulo', 'Paulo@email.com', NULL, 'Mora', 'Évora');
+INSERT INTO cliente VALUES(100000017, 'Quina', 'Quina@email.com', NULL, 'Mora', 'Évora');
+INSERT INTO cliente VALUES(100000018, 'Rui', 'Rui@email.com', NULL, 'Mourão', 'Évora');
 
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
-INSERT INTO quarto (numeroAndar, lotacaoMax, tipoQuarto) VALUES (5, 5, 'suite');
+INSERT INTO cliente VALUES(100000019, 'Sara', 'Sara@email.com', NULL, 'Monchique', 'Faro');
+INSERT INTO cliente VALUES(100000020, 'Tiago', 'Tiago@email.com', NULL, 'Olhão', 'Faro');
+INSERT INTO cliente VALUES(100000021, 'Ulrich', 'Ulrich@email.com', NULL, 'Olhão', 'Faro');
 
--- Estado de Reserva --
+INSERT INTO cliente VALUES(100000022, 'Vasco', 'Vasco@email.com', NULL, 'Gouveia', 'Guarda');
+INSERT INTO cliente VALUES(100000023, 'Walter', 'Walter@email.com', NULL, 'Manteigas', 'Guarda');
+INSERT INTO cliente VALUES(100000024, 'Xana', 'Xana@email.com', NULL, 'Mêda', 'Guarda');
+
+INSERT INTO cliente VALUES(100000025, 'Zeza', 'Zeza@email.com', NULL, 'Ansião', 'Leiria');
+INSERT INTO cliente VALUES(100000026, 'Zeza', NULL, NULL, 'Ansião', 'Leiria');
+INSERT INTO cliente VALUES(100000027, 'Ana', NULL, 123456789, 'Peniche', 'Leiria');
+
+INSERT INTO cliente VALUES(100000028, 'Bárbara', NULL, 123456790, 'Azambuja', 'Lisboa');
+INSERT INTO cliente VALUES(100000029, 'Carla', NULL, 123456791, 'Loures', 'Lisboa');
+INSERT INTO cliente VALUES(100000030, 'Diogo', NULL, 123456792, 'Loures', 'Lisboa');
+
+INSERT INTO cliente VALUES(100000031, 'Eduardo', NULL, 123456793, 'Avis', 'Portalegre');
+INSERT INTO cliente VALUES(100000032, 'Filipe', NULL, 123456794, 'Elvas', 'Portalegre');
+INSERT INTO cliente VALUES(100000033, 'Gustavo', NULL, 123456795, 'Gavião', 'Portalegre');
+
+INSERT INTO cliente VALUES(100000034, 'Hugo', NULL, 123456796, 'Trofa', 'Porto');
+INSERT INTO cliente VALUES(100000035, 'Igor', NULL, 123456797, 'Ermesinde', 'Porto');
+INSERT INTO cliente VALUES(100000036, 'João', NULL, 123456798, 'Porto', 'Porto');
+
+INSERT INTO cliente VALUES(100000037, 'Klaus', NULL, 123456799, 'Ourém', 'Santarém');
+INSERT INTO cliente VALUES(100000038, 'Luís', NULL, 123456800, 'Ourém', 'Santarém');
+INSERT INTO cliente VALUES(100000039, 'Mariana', NULL, 123456801, 'Ourém', 'Santarém');
+
+INSERT INTO cliente VALUES(100000040, 'Nuno', NULL, 123456802, 'Moita', 'Setúbal');
+INSERT INTO cliente VALUES(100000041, 'Óscar', NULL, 123456803, 'Montijo', 'Setúbal');
+INSERT INTO cliente VALUES(100000042, 'Paulo', NULL, 123456804, 'Palmeia', 'Setúbal');
+
+INSERT INTO cliente VALUES(100000053, 'José Silva', 'josesilvanotdealer@gmail.com', 912121211, 'Ermesinde', 'Valongo');
+
+INSERT INTO cliente VALUES(100000043, 'Quina', NULL, 123456805, 'Valença', 'Viana do Castelo');
+INSERT INTO cliente VALUES(100000044, 'Rui', NULL, 123456806, 'Monção', 'Viana do Castelo');
+INSERT INTO cliente VALUES(100000045, 'Sara', NULL, 123456807, 'Paredes de Coura', 'Viana do Castelo');
+
+INSERT INTO cliente VALUES(100000046, 'Tiago', NULL, 123456808, 'Montalegre', 'Vila Real');
+INSERT INTO cliente VALUES(100000047, 'Ulrich', NULL, 123456809, 'Sabrosa', 'Vila Real');
+INSERT INTO cliente VALUES(100000048, 'Vasco', NULL, 123456810, 'Valpaços', 'Vila Real');
+INSERT INTO cliente VALUES(100000052, 'José Silva', 'josesilvadealer@gmail.com', 912121212, 'Ramadas', 'Vila Real');
+INSERT INTO cliente VALUES(100000054, 'Marco Silva', 'marcosilvadealer@gmail.com', 912121213, 'Ramadas', 'Vila Real');
+
+INSERT INTO cliente VALUES(100000049, 'Walter', NULL, 123456811, 'Mortágua', 'Viseu');
+INSERT INTO cliente VALUES(100000050, 'Xana', NULL, 123456812, 'Mortágua', 'Viseu');
+INSERT INTO cliente VALUES(100000051, 'Zeza', NULL, 123456813, 'Armamar', 'Viseu');
+
+-- Estados de Reserva --
 INSERT INTO estadoReserva VALUES ('reservada');
 INSERT INTO estadoReserva VALUES ('cancelada');
 INSERT INTO estadoReserva VALUES ('ativa');
 INSERT INTO estadoReserva VALUES ('finalizada');
 
 -- Reservas --
---2020
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'single', '2020-09-30', 1, 1, 111111111);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-04-30', 2, 1, 111111111); -- deve falhar
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-04-30', 2, 1, 222222222);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-02', '2020-10-03', 'twin', '2020-06-25', 2, 1, 333333333);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-01', '2020-10-03', 'superior', '2020-04-01', 3, 3, 444444444);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-01', '2020-10-04', 'suite', '2020-09-30', 2, 1, 555555555);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-15', '2020-10-14', 'single', '2020-05-15', 1, 1, 111111111); -- deve falhar
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-15', '2020-10-17', 'single', '2020-05-15', 1, 1, 111111111);
+-- 2020 --
+-- 15 reservas no mesmo período de tempo
+DELETE FROM reserva;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-01', '2020-08-15', 'single', '2020-07-02', 1, 100000001);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-02', '2020-08-14', 'single', '2020-07-03', 1, 100000002);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-03', '2020-08-13', 'single', '2020-07-04', 1, 100000003);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-04', '2020-08-12', 'single', '2020-07-05', 1, 100000004);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-05', '2020-08-11', 'single', '2020-07-06', 1, 100000005);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-06', '2020-08-10', 'single', '2020-07-07', 1, 100000006);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-01', '2020-08-15', 'single', '2020-07-02', 1, 100000007);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-02', '2020-08-14', 'single', '2020-07-03', 1, 100000008);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-03', '2020-08-13', 'single', '2020-07-04', 1, 100000009);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-04', '2020-08-12', 'single', '2020-07-05', 1, 100000010);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-05', '2020-08-11', 'single', '2020-07-06', 1, 100000011);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-06', '2020-08-10', 'single', '2020-07-07', 1, 100000012);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-01', '2020-08-10', 'single', '2020-07-02', 1, 100000013);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-02', '2020-08-11', 'single', '2020-07-03', 1, 100000014);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-03', '2020-08-12', 'single', '2020-07-04', 1, 100000015);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+-- 28 reservas no mesmo período de tempo
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-01', '2020-09-30', 'twin', '2020-08-02', 2, 100000016);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-02', '2020-09-29', 'twin', '2020-08-03', 1, 100000017);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-03', '2020-09-28', 'twin', '2020-08-04', 2, 100000018);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-04', '2020-09-27', 'twin', '2020-08-05', 2, 100000019);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-05', '2020-09-26', 'twin', '2020-08-06', 2, 100000020);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-06', '2020-09-25', 'twin', '2020-08-07', 2, 100000021);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-07', '2020-09-24', 'twin', '2020-08-08', 2, 100000022);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-08', '2020-09-23', 'twin', '2020-08-09', 1, 100000023);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-09', '2020-09-22', 'twin', '2020-08-10', 2, 100000024);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-10', '2020-09-21', 'twin', '2020-08-11', 2, 100000025);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-11', '2020-09-20', 'twin', '2020-08-12', 2, 100000026);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-12', '2020-09-19', 'twin', '2020-08-13', 2, 100000027);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-13', '2020-09-18', 'twin', '2020-08-14', 2, 100000028);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-14', '2020-09-17', 'twin', '2020-08-15', 2, 100000029);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-01', '2020-09-30', 'twin', '2020-08-02', 2, 100000030);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-02', '2020-09-29', 'twin', '2020-08-03', 2, 100000031);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-03', '2020-09-28', 'twin', '2020-08-04', 2, 100000032);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-04', '2020-09-27', 'twin', '2020-08-05', 2, 100000033);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-05', '2020-09-26', 'twin', '2020-08-06', 2, 100000034);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-06', '2020-09-25', 'twin', '2020-08-07', 1, 100000035);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-07', '2020-09-24', 'twin', '2020-08-08', 2, 100000036);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-08', '2020-09-23', 'twin', '2020-08-09', 2, 100000037);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-09', '2020-09-22', 'twin', '2020-08-10', 2, 100000038);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-10', '2020-09-21', 'twin', '2020-08-11', 2, 100000039);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-11', '2020-09-20', 'twin', '2020-08-12', 2, 100000040);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-12', '2020-09-19', 'twin', '2020-08-13', 2, 100000041);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-13', '2020-09-18', 'twin', '2020-08-14', 2, 100000042);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-09-14', '2020-09-17', 'twin', '2020-08-15', 1, 100000043);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+-- 5 reservas no mesmo período de tempo
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-01-01', '2020-01-03', 'superior', '2019-12-02', 3, 100000044);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-01-02', '2020-01-04', 'superior', '2019-12-03', 2, 100000045);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-01-03', '2020-01-05', 'superior', '2019-12-04', 3, 100000046);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-01-04', '2020-01-06', 'superior', '2019-12-05', 1, 100000047);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-01-05', '2020-01-07', 'superior', '2019-12-06', 2, 100000048);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+-- 12 reservas divididas por dois períodos de tempo diferentes
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-01', '2020-08-15', 'suite', '2020-07-02', 4, 100000049);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-02', '2020-08-14', 'suite', '2020-07-03', 4, 100000050);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-03', '2020-08-13', 'suite', '2020-07-04', 4, 100000051);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-04', '2020-08-12', 'suite', '2020-07-05', 4, 100000016);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-05', '2020-08-11', 'suite', '2020-07-06', 4, 100000017);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-08-06', '2020-08-10', 'suite', '2020-07-07', 4, 100000018);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-10-01', '2020-10-10', 'suite', '2020-09-01', 4, 100000019);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-10-02', '2020-10-11', 'suite', '2020-09-02', 4, 100000020);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-10-03', '2020-10-12', 'suite', '2020-09-03', 4, 100000001);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-10-04', '2020-10-13', 'suite', '2020-09-04', 4, 100000002);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-10-05', '2020-10-14', 'suite', '2020-09-05', 4, 100000003);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF) VALUES('2020-10-06', '2020-10-15', 'suite', '2020-09-06', 4, 100000004);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
 
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-09-23', '2020-09-25', 'suite', '2020-08-15', 1, 1, 777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-10-15', '2020-10-17', 'twin', '2020-05-15', 1, 1, 777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-06-23', '2020-06-25', 'single', '2020-02-15', 1, 1, 888888888);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-05-16', '2020-05-17', 'suite', '2020-02-15', 1, 1, 888888888);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-06-26', '2020-06-27', 'single', '2020-02-15', 1, 1, 999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-05-18', '2020-05-19', 'twin', '2020-02-15', 1, 1, 999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2020-03-18', '2020-09-19', 'suite', '2020-02-15', 1, 1, 999999999);
+-- 2019 --
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-03-12','2019-03-16','suite','2019-03-10',2,100000049);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-07-20','2019-07-22','superior','2019-07-19',3,100000050);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-12-23','2019-12-28','twin','2019-12-20',2,100000051);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-01-09','2019-01-12','single','2019-01-08',1,100000001);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-08-12','2019-08-13','twin','2019-08-11',2,100000007);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-10-30','2019-11-04','suite','2019-10-28',3,100000009);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-02-13','2019-02-16','suite','2019-02-10',2,100000004);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-09-01','2019-09-05','single','2019-08-30',1,100000002);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-11-17','2019-11-19','superior','2019-11-16',3,100000008);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-04-22','2019-04-25','twin','2019-04-21',2,100000005);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-07-05','2019-07-16','superior','2019-06-29',4,100000003);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-10-28','2019-10-31','twin','2019-10-26',2,100000009);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-03-22','2019-03-27','single','2019-03-18',1,100000001);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-09-12','2019-09-16','suite','2019-09-10',2,100000006);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2019-12-01','2019-12-06','superior','2019-11-29',3,100000009);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
 
---2019
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-03-12','2019-03-16','suite','2019-03-10',2,5,999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-07-20','2019-07-22','superior','2019-07-19',3,2,222222222);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-12-23','2019-12-28','twin','2019-12-20',2,4,555555555);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-01-09','2019-01-12','single','2019-01-08',1,3,111111111);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-08-12','2019-08-13','twin','2019-08-11',2,5,777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-10-30','2019-11-04','suite','2019-10-28',3,2,999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-02-13','2019-02-16','suite','2019-02-10',2,5,444444444);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-09-01','2019-09-05','single','2019-08-30',1,4,222222222);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-11-17','2019-11-19','superior','2019-11-16',3,3,888888888);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-04-22','2019-04-25','twin','2019-04-21',2,2,555555555);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-07-05','2019-07-16','superior','2019-06-29',4,5,333333333);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-10-28','2019-10-31','twin','2019-10-26',2,1,999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-03-22','2019-03-27','single','2019-03-18',1,3,111111111);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-09-12','2019-09-16','suite','2019-09-10',2,4,666666666);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2019-12-01','2019-12-06','superior','2019-11-29',3,1,999999999);
-
---2018
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-03-12','2018-03-16','suite','2018-03-10',2,5,999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-04-19','2018-04-22','superior','2018-04-18',4,2,222222222);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-01-02','2018-01-06','suite','2017-12-26',2,4,111111111);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-02-22','2018-02-26','single','2018-02-10',1,3,777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-05-16','2018-05-18','superior','2018-05-15',3,5,444444444);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-06-12','2018-06-16','suite','2018-06-10',2,5,555555555);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-07-09','2018-07-13','single','2018-07-08',1,3,666666666);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-08-26','2018-08-29','suite','2018-08-22',4,2,999999999);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-06-01','2018-06-10','superior','2018-05-29',3,4,111111111);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-09-11','2018-09-14','twin','2018-09-10',2,4,333333333);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-10-12','2018-10-16','suite','2018-10-10',3,1,222222222);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-12-22','2018-12-27','suite','2018-12-10',2,3,777777777);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-11-15','2018-11-18','twin','2018-11-10',2,5,666666666);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-10-02','2018-10-10','suite','2018-10-01',1,1,888888888);
-INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, numeroAndar, clienteNIF)
-VALUES ('2018-12-12','2018-12-16','superior','2018-12-10',4,2,555555555);
+-- 2018 --
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-03-12','2018-03-16','suite','2018-03-10',2,100000016);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-04-19','2018-04-22','superior','2018-04-18',4,100000017);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-01-02','2018-01-06','suite','2017-12-26',2,100000018);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-02-22','2018-02-26','single','2018-02-10',1,100000007);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-05-16','2018-05-18','superior','2018-05-15',3,100000004);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-06-12','2018-06-16','suite','2018-06-10',2,100000005);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-07-09','2018-07-13','single','2018-07-08',1,100000006);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-08-26','2018-08-29','suite','2018-08-22',4,100000009);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-06-01','2018-06-10','superior','2018-05-29',3,100000001);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-09-11','2018-09-14','twin','2018-09-10',2,100000003);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-10-12','2018-10-16','suite','2018-10-10',3,100000002);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-12-22','2018-12-27','suite','2018-12-10',2,100000007);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-11-15','2018-11-18','twin','2018-11-10',2,100000006);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-10-02','2018-10-10','suite','2018-10-01',1,100000008);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
+INSERT INTO reserva (dataEntrada, dataSaida, tipoQuarto, dataReserva, numeroPessoas, clienteNIF)
+VALUES ('2018-12-12','2018-12-16','superior','2018-12-10',4,100000005);
+UPDATE reserva r1 SET numeroAndar = (SELECT numeroAndar FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), numeroSequencial  = (SELECT numeroSequencial FROM (SELECT numeroAndar, numeroSequencial FROM quarto WHERE tipoQuarto = r1.tipoQuarto AND lotacaoMax >= r1.numeroPessoas MINUS (SELECT numeroAndar, numeroSequencial FROM reserva WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada) OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida))) WHERE ROWNUM = 1), nomeEpoca = (select nomeEpoca from EpocaAno where (mesInicio<Extract(Month from r1.dataEntrada) or (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) and (Extract(Month from r1.dataEntrada)<mesFim) or (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim)) WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;
 
 -- Funcionarios --
 INSERT INTO funcionario VALUES (100000000, 'AAA', 'm1', 111111111, 'aaa@mail.com');
@@ -391,67 +478,24 @@ INSERT INTO funcionario VALUES (800000000, 'HHH', 'm6', 888888888, 'HHH@mail.com
 INSERT INTO funcionario VALUES (900000000, 'III', 'm5', 999999999, 'III@mail.com');
 INSERT INTO funcionario VALUES (110000000, 'JJJ', 'm6', 110000000, 'JJJ@mail.com');
 
+-- Funcionarios de Manutenção -- 
 INSERT INTO funcionarioManutencao VALUES (100000000, 111111111, NULL);
 INSERT INTO funcionarioManutencao VALUES (200000000, 222222222, 100000000);
 INSERT INTO funcionarioManutencao VALUES (300000000, 333333333, 100000000);
 INSERT INTO funcionarioManutencao VALUES (400000000, 444444444, 100000000);
 
+-- Manutenções --
 INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (1, 1, 100000000, 'microondas', '2020-11-14 08:00:00');
-INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 4, 100000000, 'microondas', '2020-10-01 08:00:00');
-INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 4, 200000000, 'forno', '2020-10-02 09:00:00');
-INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (3, 7, 100000000, 'ar condicionado', '');
-INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (4, 8, 200000000, 'microondas','2020-10-01 10:00:00');
+INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 42, 100000000, 'microondas', '2020-10-01 08:00:00');
+INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 42, 200000000, 'forno', '2020-10-02 09:00:00');
+INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (3, 90, 100000000, 'ar condicionado', '');
+INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (3, 92, 200000000, 'microondas','2020-10-01 10:00:00');
 INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (1, 1, 300000000, 'forno', null);
-INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 4, 400000000, 'ar condicionado','2020-11-13 16:00:00');
-INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (3, 7, 100000000, 'forno', '2020-10-02 08:00:00');
+INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (2, 42, 400000000, 'ar condicionado','2020-11-13 16:00:00');
+INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (3, 90, 100000000, 'forno', '2020-10-02 08:00:00');
 INSERT INTO manutencao (numeroandar, numeroSequencial, funcionarioNIF, equipamento, data) VALUES (1, 1, 300000000, 'forno', '2020-10-02 08:00:00');
 
-insert INTO fatura (codReserva, total) 
-values ((select codReserva from reserva where dataSaida < CURRENT_TIMESTAMP and clienteNif=777777777 and numeroSequencial=2), 125);
-
-/*ATRIBUIÇÃO AUTOMÁTICA DE QUARTOS DISPONÍVEIS ÀS RESERVAS*/
-UPDATE reserva r1
-SET numeroAndar = 
-(SELECT numeroAndar FROM (
-/*QUERY COM OS QUARTOS NÃO RESERVADOS DO TIPO E LOTAÇÃO ADEQUADOS*/
-SELECT numeroAndar, numeroSequencial
-FROM quarto
-WHERE tipoQuarto = r1.tipoQuarto
-AND lotacaoMax >= r1.numeroPessoas
-MINUS (
-/*QUERY COM OS QUARTOS JÁ RESERVADOS*/
-SELECT numeroAndar, numeroSequencial
-FROM reserva
-WHERE (dataEntrada <= r1.dataEntrada
-  AND dataSaida >= r1.dataEntrada)
-   OR (dataEntrada <= r1.dataSaida
-  AND dataSaida >= r1.dataSaida)
-  )
-) WHERE ROWNUM = 1),
-numeroSequencial  = (
-SELECT numeroSequencial FROM (
-/*QUERY COM OS QUARTOS NÃO RESERVADOS DO TIPO E LOTAÇÃO ADEQUADOS*/
-SELECT numeroAndar, numeroSequencial
-FROM quarto
-WHERE tipoQuarto = r1.tipoQuarto
-AND lotacaoMax >= r1.numeroPessoas
-MINUS (
-/*QUERY COM OS QUARTOS JÁ RESERVADOS*/
-SELECT numeroAndar, numeroSequencial
-FROM reserva
-WHERE (dataEntrada <= r1.dataEntrada
-  AND dataSaida >= r1.dataEntrada)
-   OR (dataEntrada <= r1.dataSaida
-  AND dataSaida >= r1.dataSaida)
-  )
-) WHERE ROWNUM = 1),
-nomeEpoca=(
-select nomeEpoca from EpocaAno
-where (mesInicio<Extract(Month from r1.dataEntrada) or 
-    (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) 
-and (Extract(Month from r1.dataEntrada)<mesFim) or 
-    (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim));
-
+-- Camareiras --
 insert into funcionarioCamareira values (500000000);
 insert into funcionarioCamareira values (600000000);
 insert into funcionarioCamareira values (700000000);
@@ -459,7 +503,7 @@ insert into funcionarioCamareira values (800000000);
 insert into funcionarioCamareira values (900000000);
 insert into funcionarioCamareira values (110000000);
 
-
+-- Limpezas -- 
 insert into limpeza values (1,11, 500000000, '2020-02-05 19:00:00');
 insert into limpeza values (1,11, 500000000, '2020-02-06 19:00:00');
 insert into limpeza values (1,11, 500000000, '2020-10-05 19:00:00');
@@ -471,7 +515,7 @@ insert into limpeza values (1,2, 700000000, '2020-10-01 19:00:00');
 insert into limpeza values (1,1, 500000000, '2020-10-02 19:00:00');
 insert into limpeza values (1,11, 500000000, '2020-10-03 19:00:00');
 
--- PRODUTOS --
+-- Produtos --
 --Bebidas
 insert into Produto (produto,custo) values ('Coca-Cola',5);
 insert into Produto (produto,custo) values ('Fanta',4);
@@ -482,7 +526,7 @@ insert into Produto (produto,custo) values ('Leite de Soja',6);
 insert into Produto (produto,custo) values ('Super Bock',5);
 insert into Produto (produto,custo) values ('Vinho Verde',13);
 insert into Produto (produto,custo) values ('Cidra',7);
---Sncaks mini-bar
+--Snacks mini-bar
 insert into Produto (produto,custo) values ('Amendoins',3);
 insert into Produto (produto,custo) values ('Cajus',5);
 insert into Produto (produto,custo) values ('Lays',4);
@@ -505,7 +549,6 @@ insert into Conta (codReserva) values (16);--10
 insert into Conta (codReserva) values (25);--11
 insert into Conta (codReserva) values (39);--12
 insert into Conta (codReserva) values (41);--13
-
 
 -- Consumos --
 --Ultimos 6 meses 11-5
@@ -539,7 +582,52 @@ insert into Consumos values ('2018-06-02',12,12);
 insert into Consumos values ('2018-10-13',12,13);
 insert into Consumos values ('2019-04-23',12,11); --ainda por fazer
 
--- UPDATE da dataAbertura das contas
+-- Fatura --
+insert INTO fatura (codReserva, total) 
+values ((select codReserva from reserva where dataSaida < CURRENT_TIMESTAMP and clienteNif=777777777 and numeroSequencial=2), 125);
+
+-- UPDATES --
+--ATRIBUIÇÃO AUTOMÁTICA DE QUARTOS DISPONÍVEIS ÀS RESERVAS
+/*UPDATE reserva r1
+SET numeroAndar = 
+    (SELECT numeroAndar FROM (
+    --QUERY COM OS QUARTOS NÃO RESERVADOS DO TIPO E LOTAÇÃO ADEQUADOS
+        SELECT numeroAndar, numeroSequencial
+        FROM quarto
+        WHERE tipoQuarto = r1.tipoQuarto
+        AND lotacaoMax >= r1.numeroPessoas
+        MINUS (
+    --QUERY COM OS QUARTOS JÁ RESERVADOS
+            SELECT numeroAndar, numeroSequencial
+            FROM reserva
+            WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada)
+            OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida)
+        )
+    ) WHERE ROWNUM = 1),
+numeroSequencial  = (
+    SELECT numeroSequencial FROM (
+    --QUERY COM OS QUARTOS NÃO RESERVADOS DO TIPO E LOTAÇÃO ADEQUADOS
+        SELECT numeroAndar, numeroSequencial
+        FROM quarto
+        WHERE tipoQuarto = r1.tipoQuarto
+        AND lotacaoMax >= r1.numeroPessoas
+        MINUS (
+    --QUERY COM OS QUARTOS JÁ RESERVADOS
+            SELECT numeroAndar, numeroSequencial
+            FROM reserva
+            WHERE (dataEntrada <= r1.dataEntrada AND dataSaida >= r1.dataEntrada)
+            OR (dataEntrada <= r1.dataSaida AND dataSaida >= r1.dataSaida)
+        )
+    ) WHERE ROWNUM = 1),
+nomeEpoca = (
+select nomeEpoca from EpocaAno
+where (mesInicio<Extract(Month from r1.dataEntrada) or 
+    (mesInicio=Extract(Month from r1.dataEntrada) and diaInicio<=Extract(Day from r1.dataEntrada))) 
+and (Extract(Month from r1.dataEntrada)<mesFim) or 
+    (Extract(Month from r1.dataEntrada) = mesFim and Extract(Day from r1.dataEntrada)<=diaFim))
+WHERE numeroAndar IS NULL AND numeroSequencial IS NULL;*/
+
+--UPDATE DA DATA DE ABERTURA DAS CONTAS
 UPDATE Conta c1
 set dataAbertura=(
 select min(csm.dataConsumos) from Consumos csm

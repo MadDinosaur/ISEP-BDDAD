@@ -66,12 +66,10 @@ Create Table EpocaAno (
     diaFim             Integer         Constraint nnEpocaAnoDiaFim             Not Null,
     mesFim              Integer         Constraint nnEpocaAnoMesFim             Not Null,
     CONSTRAINT ck_datas_epoca CHECK(mesFim > mesInicio or ( mesFim=mesInicio and diaFim>diaInicio)),
-    Constraint ck_mes_inicio Check(mesInicio<=12),
-    Constraint ck_mes_fim check(mesFim<=12),
-    Constraint ck_dia_inicio check(diaInicio <= 31 and diaInicio > 0),
-	Constraint ck_dia_fim check(diaFim <= 31 and diaFim > 0),
-	Constraint ukEpocaAnoDiaMesInicio UNIQUE(diaInicio,mesInicio),
-    Constraint okEpocaAnoDiaMesFim UNIQUE(diaFim,mesFim)
+    Constraint ck_inicio check(diaInicio <= EXTRACT(DAY FROM LAST_DAY(TO_DATE('2020' || TO_CHAR(mesInicio, '09') || '01', 'YYYYMMDD'))) and diaInicio > 0),
+	Constraint ck_fim check(diaFim <= EXTRACT(DAY FROM LAST_DAY(TO_DATE('2020' || TO_CHAR(mesFim, '09') || '01', 'YYYYMMDD'))) and diaFim> 0),
+	Constraint ukEpocaAnoDiaMesInicio UNIQUE(diaInicio, mesInicio),
+    Constraint ukEpocaAnoDiaMesFim UNIQUE(diaFim, mesFim)
 );
 Create Table Conta (
     nrConta             Integer     GENERATED ALWAYS AS IDENTITY Constraint pkContaNrConta               PRIMARY KEY,
@@ -94,7 +92,9 @@ Create Table Cliente (
                                     Constraint check_NIF    check(REGEXP_LIKE(NIF, '^\d{9}$')),
     nome                Varchar(50) Constraint nnClienteNome                NOT NULL,
     email               Varchar(50) Constraint check_email check(REGEXP_LIKE(email, '@{1}')),
+                                    Constraint ukClienteEmail UNIQUE(email),
     telefone            Integer     Constraint check_telefone    check(REGEXP_LIKE(telefone, '^\d{9}$')),
+                                    Constraint ukClienteTelefone UNIQUE(telefone),
     localidade          Varchar(50) Constraint nnClienteLocalidade          NOT NULL,
     concelho            Varchar(50) Constraint nnClienteConcelho            NOT NULL
 );
