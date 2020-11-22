@@ -155,27 +155,30 @@ with tabelaCount as (select r.numeroAndar, r.numeroSequencial, count(r.numeroSeq
                      Inner join quarto q1 on q1.numeroSequencial = r.numeroSequencial and q1.numeroAndar = r.numeroAndar
                      where r.estado != 'cancelada' 
                      group by r.numeroAndar, r.numeroSequencial)              
-select a.numeroAndar as ANDAR, q.numeroSequencial, q.tipoQuarto from andar a
-inner join Quarto q on a.numeroAndar = q.numeroAndar
-group by  a.numeroAndar, q.numeroSequencial, q.tipoQuarto
-having q.numeroSequencial not in(select numeroSequencial from Reserva
-                                 group by numeroSequencial,tipoQuarto 
-                                 having count(numeroSequencial) < 2 and tipoQuarto = 'single')
-and count(q.numeroSequencial) in (select max(countQuartos) from tabelaCount
-                                  where a.numeroAndar = numeroAndar and q.numeroSequencial = numeroSequencial);
+select a.numeroAndar as ANDAR, r1.numeroSequencial, r1.tipoQuarto from andar a
+inner join Reserva r1 on r1.numeroAndar=a.numeroAndar
+group by  a.numeroAndar, r1.numeroSequencial, r1.tipoQuarto
+having r1.numeroSequencial not in(select numeroSequencial from Reserva
+                                  group by numeroSequencial,tipoQuarto 
+                                  having count(numeroSequencial) < 2 and tipoQuarto = 'single')
+and count(r1.numeroSequencial) in (select max(countQuartos) from tabelaCount 
+                                   where a.numeroAndar = numeroAndar 
+                                   group by numeroAndar)
+order by a.numeroAndar;
 
---b)
-with countProdutos as (select count(idProduto) as contador from Consumos 
-                       where rowNum <= 2
-                       order by 1)
-select c.nome from cliente c
+--b) 12 e 16
+with countProdutos as (select (idProduto) as contador from Consumos  
+                       group by idProduto
+                       order by 1 desc)
+select c.nome,csm.idProduto from cliente c
 inner join Reserva r on r.clienteNIF = c.NIF
 inner join Conta ct on ct.codReserva = r.codReserva
 inner join Consumos csm on csm.nrConta = ct.nrConta
 where r.tipoQuarto = 'suite' and r.nomeEpoca = 'alta' and Extract(YEAR from r.dataEntrada) >= 2019 
-group by c.nome, csm.idProduto
+group by c.nome,csm.idProduto
 having csm.idProduto in (select idProduto from Consumos 
-                         group by idProduto
-                         having count(idProduto) in (select contador from countProdutos))
+             group by idProduto
+             having count(idProduto) in (select contador from countProdutos
+                                         where rowNum <= 2))
 order by (select sum(custo) from Produto 
           where csm.idProduto = idProduto);
