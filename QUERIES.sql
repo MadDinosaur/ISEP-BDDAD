@@ -116,8 +116,7 @@ WHERE funcionarionif = (select funcionarionif from
 -- solucao
 SELECT DISTINCT
     EXTRACT(MONTH FROM(l.data)) AS mês,
-    f.nome,
-    f.nif
+    f.nome
 FROM funcionario f INNER JOIN funcionarioCamareira fc ON f.nif = fc.funcionarionif
 INNER JOIN limpeza l ON fc.funcionarioNIF = l.funcionarioNIF
 WHERE months_between(current_timestamp, l.data)<=6
