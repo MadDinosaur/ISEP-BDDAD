@@ -159,26 +159,34 @@ select a.numeroAndar as ANDAR, r1.numeroSequencial, r1.tipoQuarto from andar a
 inner join Reserva r1 on r1.numeroAndar=a.numeroAndar
 group by  a.numeroAndar, r1.numeroSequencial, r1.tipoQuarto
 having r1.numeroSequencial not in(select numeroSequencial from Reserva
-                                  group by numeroSequencial,tipoQuarto 
-                                  having count(numeroSequencial) < 2 and tipoQuarto = 'single')
+                                 group by numeroSequencial,tipoQuarto 
+                                 having count(numeroSequencial) < 2 and tipoQuarto = 'single')
 and count(r1.numeroSequencial) in (select max(countQuartos) from tabelaCount 
-                                   where a.numeroAndar = numeroAndar 
-                                   group by numeroAndar)
+                                  where a.numeroAndar = numeroAndar 
+                                  group by numeroAndar)
 order by a.numeroAndar;
 
 --b) 12 e 16
-with countProdutos as (select (idProduto) as contador from Consumos  
+with countProdutos as (select count(idProduto) as contador,idProduto from Consumos  
                        group by idProduto
-                       order by 1 desc)
-select c.nome,csm.idProduto from cliente c
+                       order by 1 desc),
+doisMaisConsumidos as (select idProduto from countProdutos
+                 where rowNum<=2),
+maisConsumido as (select idProduto from countProdutos
+                 where rowNum=1),
+segundoMaisConsumido as (select idProduto from doisMaisConsumidos
+                        where idProduto <> (select idProduto from maisConsumido))
+select c.nome,c.NIF, sum(p.custo) as totalCustos 
+from cliente c
 inner join Reserva r on r.clienteNIF = c.NIF
 inner join Conta ct on ct.codReserva = r.codReserva
 inner join Consumos csm on csm.nrConta = ct.nrConta
+inner join Produto p on p.idProduto=csm.idProduto
 where r.tipoQuarto = 'suite' and r.nomeEpoca = 'alta' and Extract(YEAR from r.dataEntrada) >= 2019 
-group by c.nome,csm.idProduto
-having csm.idProduto in (select idProduto from Consumos 
-             group by idProduto
-             having count(idProduto) in (select contador from countProdutos
-                                         where rowNum <= 2))
-order by (select sum(custo) from Produto 
-          where csm.idProduto = idProduto);
+and (select idProduto from segundoMaisConsumido) in (select idProduto from Consumos
+                                                     where nrConta=ct.nrConta)
+and (select idProduto from maisConsumido) in (select idProduto from Consumos
+                                              where nrConta=ct.nrConta) 
+group by c.nome, c.NIF
+order by totalCustos desc;
+
