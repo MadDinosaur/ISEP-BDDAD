@@ -5,7 +5,7 @@ REFERENCING NEW AS NEW OLD AS OLD
 FOR EACH ROW
 DECLARE 
 
-/*
+
     CURSOR cDataInicio IS
         SELECT data_ini
         FROM epoca;
@@ -14,7 +14,6 @@ DECLARE
         SELECT data_fim
         FROM epoca;
 
-*/
     vDataInicio epoca.data_ini%TYPE;
     vDataFim epoca.data_fim%TYPE;
     
@@ -23,10 +22,11 @@ DECLARE
     
     
 BEGIN
-
+ OPEN cDataInicio;
+ OPEN cDataFim;
     LOOP
-      --  FETCH cDataInicio INTO vDataInicio;
-      --  FETCH cDataFim INTO vDataFim;
+       FETCH cDataInicio INTO vDataInicio;
+       FETCH cDataFim INTO vDataFim;
             
         IF(:new.data_ini between vDataInicio AND vDataFim) THEN
     
@@ -40,6 +40,8 @@ BEGIN
     
         END IF;
     END LOOP;
+   CLOSE cDataFim;
+   CLOSE cDataInicio;
 
 EXCEPTION
     WHEN dataInicioException THEN
@@ -54,4 +56,6 @@ alter trigger trgEpocasNaoSobrepostas enable;
 set SERVEROUTPUT on;
     
 insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2020-04-03', 'yyyy-mm-dd'), to_date('2020-06-30', 'yyyy-mm-dd'));
+insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2021-04-03', 'yyyy-mm-dd'), to_date('2020-06-30', 'yyyy-mm-dd'));
+insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2020-04-03', 'yyyy-mm-dd'), to_date('2021-06-30', 'yyyy-mm-dd'));
     
