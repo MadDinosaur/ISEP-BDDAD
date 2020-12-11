@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION fncDisponibilidadeReserva(p_tipo_quarto RESERVA.ID_TIPO_QUARTO%type,
-                                                     p_data RESERVA.DATA%type, p_duracao integer,
+                                                     p_data RESERVA.DATA_ENTRADA%type, p_duracao integer,
                                                      p_nr_pessoas RESERVA.NR_PESSOAS%type)
     RETURN boolean IS
     exInvalidData EXCEPTION;
