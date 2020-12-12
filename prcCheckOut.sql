@@ -37,6 +37,8 @@ BEGIN
     SELECT 
         SYSDATE INTO vCheckoutDate
     FROM DUAL;
+    
+    vValorExtra:=0;
 
     IF (pReserva.custo_extra is not null) THEN
     vValorExtra := (vCheckoutDate - pReserva.data_saida) * pReserva.custo_extra;
@@ -76,6 +78,8 @@ BEGIN
     
         END LOOP;
     CLOSE cIdCheckout;
+    
+    dbms_output.put_line(pReserva.id);
 
     INSERT INTO checkout(id_reserva, data, valor_extra) VALUES (pReserva.id, vCheckoutDate, vValorExtra);
     INSERT INTO fatura(id, numero, data, id_cliente, id_reserva, valor_faturado_reserva, valor_faturado_consumo) VALUES (vIdMaximo, vNumeroMaximo, vCheckoutDate, pReserva.id_cliente, pReserva.id, vPrecoReserva, vPrecoConsumo);
@@ -107,7 +111,26 @@ Begin
 end;
 /
 
-    SELECT MAX(id)
-    FROM fatura;
+DECLARE
+
+vReserva reserva%ROWTYPE;
+
+
+Begin
+    BEGIN
+    
+    INSERT INTO reserva(id, id_cliente, nome, id_tipo_quarto, data, data_entrada, data_saida, nr_pessoas, preco, id_estado_reserva)
+    VALUES (76868, 196, null, 1, '2045-12-5', '2045-12-6', '2045-12-8', 1, 23, 1);
+    SELECT * INTO vReserva
+    from reserva 
+    where id=76868;
+    
+       prcCheckOut(vReserva);
+    end;
+end;
+/
+
+
+set serveroutput on;
 
 
