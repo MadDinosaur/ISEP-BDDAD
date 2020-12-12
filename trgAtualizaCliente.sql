@@ -18,6 +18,7 @@ EXCEPTION
 end trgAtualizaCliente;
 /
 BEGIN
-    insert into reserva(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (1,2000, 1);
-    insert into RESERVA(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (2, 1, 1);
+    insert into reserva(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (501,2000, 1); -- cliente inválido, gera uma exceção
+    insert into RESERVA(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (501, 1, 1); -- ativa o trigger
 end;
+/
