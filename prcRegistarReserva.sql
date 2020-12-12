@@ -6,7 +6,7 @@ CREATE OR REPLACE PROCEDURE prcRegistarReserva(p_tipo_quarto RESERVA.ID_TIPO_QUA
                                                p_nome_cliente RESERVA.NOME%type DEFAULT NULL,
                                                p_nif_cliente RESERVA.NIF%type DEFAULT NULL,
                                                p_telefone_cliente RESERVA.TELEFONE%type DEFAULT NULL,
-                                               p_email_cliente RESERVA.EMAIL%type)
+                                               p_email_cliente RESERVA.EMAIL%type DEFAULT NULL)
 AS
     ex_demasiados_parametros EXCEPTION;
     ex_parametros_insuficientes EXCEPTION;
@@ -53,3 +53,4 @@ EXCEPTION
     when ex_reserva_indisponivel then
         raise_application_error(-20005, 'Não é possível fazer a reserva para as datas selecionadas.');
 end;
+/
