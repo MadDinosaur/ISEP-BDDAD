@@ -3,18 +3,22 @@ Create or Replace Procedure prcAtualizarBonusCamareiras(
   p_ano in Integer default (extract(year from sysdate))) 
 as
     v_informacao sys_refcursor;
-    v_totalConsumos artigo_consumo.preco%type;
+    v_id Camareira.id%type;
+    v_nomeCamareira Funcionario.nome%type;
+    v_totalConsumos Artigo_Consumo.preco%type;
+    v_dataMin Linha_Conta_Consumo.data_registo%type;
+    v_dataMax Linha_Conta_Consumo.data_registo%type;
+    v_diasSemRegistos int;
     v_bonus artigo_consumo.preco%type;
     ex_valoresInvalidos exception;
 begin
     v_informacao:=fncObterRegistoMensalCamareira(p_mes,p_ano);
-    if v_informcacao is null then 
-        raise ex_valoresInvaidos;
+    if v_informacao is null then 
+        raise ex_valoresInvalidos;
     end if;
     loop
-        fetch v_informacao into aaa;
+        fetch v_informacao into v_id,v_nomeCamareira,v_totalConsumos,v_dataMin,v_dataMax,v_diasSemRegistos;
         exit when v_informacao%notfound;
-        v_totalConsumos:=v_informacao.totalPreco;
         if v_totalConsumos > 1000 then
             v_bonus:=0.15*v_totalConsumos;
         elsif v_totalConsumos >= 500 then
@@ -26,9 +30,17 @@ begin
         end if;
         update Camareira
          set bonus=v_bonus
-         where id=v_informacao.id;
+         where id=v_id;
     end loop;
 exception
     when ex_valoresInvalidos then
-        return null;
+        raise_application_error(-20011,'Parametro(s)s inválido(s)');
 end;
+/
+select * from Camareira;
+/
+begin
+prcAtualizarBonusCamareiras(3,2020);
+end;
+/
+select * from Camareira;
