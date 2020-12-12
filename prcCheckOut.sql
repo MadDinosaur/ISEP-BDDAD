@@ -3,29 +3,32 @@ AS
 
     vNumero int;
     vCheckoutDate checkout.data%TYPE; 
-    vValorExtra checkout.valor_extra%TYPE := 0;
+    vValorExtra checkout.valor_extra%TYPE;
     vPrecoReserva fatura.valor_faturado_reserva%TYPE;
     vPrecoConsumo fatura.valor_faturado_consumo%TYPE;
+    vReservaHasCheckout reserva.id%TYPE;
     
     vIdMaximo fatura.id%TYPE;
     vNumeroMaximo fatura.id%TYPE;
+    
+    CURSOR cIdCheckout IS
+    SELECT id_reserva
+    FROM checkout;
 
+    vIdCheckout checkout.id_reserva%TYPE;
+    
     parametroInvalidoException EXCEPTION;
+    checkoutJaFeito EXCEPTION;
+    
 
 BEGIN
-
-    IF (pReserva IS NULL) THEN
-    
-        RAISE parametroInvalidoException;
-        
-    END IF;
     
     SELECT COUNT(*) into vNumero
     FROM reserva
     GROUP BY id
     HAVING id=pReserva.id;
     
-    IF vNumero!=0 THEN
+    IF vNumero=0 THEN
     
         RAISE parametroInvalidoException;
         
@@ -35,7 +38,10 @@ BEGIN
         SYSDATE INTO vCheckoutDate
     FROM DUAL;
 
+    IF (pReserva.custo_extra is not null) THEN
     vValorExtra := (vCheckoutDate - pReserva.data_saida) * pReserva.custo_extra;
+    END IF;
+    
     vPrecoReserva := (pReserva.data_saida - pReserva.data_entrada) * pReserva.preco;
 
     SELECT SUM(lcc.preco_unitario * lcc.quantidade) INTO vPrecoConsumo
@@ -55,14 +61,53 @@ BEGIN
     IF vNumeroMaximo=null THEN
     vIdMaximo:=1;
     END IF;
-
-   INSERT INTO checkout(id_reserva, data, valor_extra) VALUES (pReserva.id, vCheckoutDate, vValorExtra);
-   INSERT INTO fatura(id, numero, data, id_cliente, id_reserva, valor_faturado_reserva, valor_faturado_consumo) VALUES (vIdMaximo, NSEI, vCheckoutDate, pReserva.id_cliente, pReserva.id, vPrecoReserva, vPrecoConsumo);
-
-    exception
-        when parametroInvalidoException then
-            RAISE_APPLICATION_ERROR(-20001, 'Parametro Inválido');
+    
+    OPEN cIdCheckout;
+        LOOP
+        FETCH cIdCheckout INTO vIdCheckout;
         
+        EXIT WHEN cIdCheckout%notfound;
+        
+        IF(pReserva.id = vIdCheckout) THEN
+        
+            RAISE checkoutJaFeito;
+            
+        END IF;
+    
+        END LOOP;
+    CLOSE cIdCheckout;
+
+    INSERT INTO checkout(id_reserva, data, valor_extra) VALUES (pReserva.id, vCheckoutDate, vValorExtra);
+    INSERT INTO fatura(id, numero, data, id_cliente, id_reserva, valor_faturado_reserva, valor_faturado_consumo) VALUES (vIdMaximo, vNumeroMaximo, vCheckoutDate, pReserva.id_cliente, pReserva.id, vPrecoReserva, vPrecoConsumo);
+
+    EXCEPTION
+        WHEN parametroInvalidoException THEN
+            RAISE_APPLICATION_ERROR(-20001, 'Parametro Inválido');
+            
+        WHEN CheckoutJaFeito THEN
+            RAISE_APPLICATION_ERROR(-20002, 'Checkout desta reserva já foi feito');
             
 END;
+/
+
+DECLARE
+
+vReserva reserva%ROWTYPE;
+
+
+Begin
+    begin
+    
+    SELECT * INTO vReserva
+    from reserva 
+    where id=395;
+    
+       prcCheckOut(vReserva);
+    end;
+end;
+/
+
+    SELECT MAX(id)
+    FROM fatura;
+
 
