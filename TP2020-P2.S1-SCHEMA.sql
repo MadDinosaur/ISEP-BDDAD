@@ -147,7 +147,8 @@ id_responsavel int constraint fk_funcionario_manutencao_resp references funciona
 telefone varchar(20));
 
 create table camareira(
-id int constraint pk_camareira primary key constraint fk_camareira_funcionario references funcionario(id));
+id int constraint pk_camareira primary key constraint fk_camareira_funcionario references funcionario(id),
+bonus number(6, 2) default 0);
 
 create table linha_conta_consumo(
 id_conta_consumo int constraint fk_linha_conta_consumo references conta_consumo(id),
