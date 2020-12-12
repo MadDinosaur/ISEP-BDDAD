@@ -44,3 +44,9 @@ prcAtualizarBonusCamareiras(3,2020);
 end;
 /
 select * from Camareira;
+/
+begin
+prcAtualizarBonusCamareiras(5,2020);
+end;
+/
+select * from Camareira;
