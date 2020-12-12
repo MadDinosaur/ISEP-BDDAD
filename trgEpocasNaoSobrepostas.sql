@@ -27,7 +27,10 @@ BEGIN
     LOOP
        FETCH cDataInicio INTO vDataInicio;
        FETCH cDataFim INTO vDataFim;
-            
+       
+        EXIT WHEN cDataInicio%notfound;
+        EXIT WHEN cDataFim%notfound;
+        
         IF(:new.data_ini between vDataInicio AND vDataFim) THEN
     
             raise dataInicioException;
