@@ -1,25 +1,32 @@
 CREATE OR REPLACE TRIGGER trgAtualizaCliente
-    AFTER INSERT or update of ID_CLIENTE
+    BEFORE INSERT
     ON RESERVA
     for each row
-    DECLARE v_validar_id RESERVA.ID_CLIENTE%type;
+DECLARE
+    v_nome CLIENTE.NOME%type;
+    v_nif CLIENTE.NIF%type;
+    v_telefone CLIENTE.TELEFONE%type;
+    v_email CLIENTE.EMAIL%type;
 BEGIN
     if :new.ID_CLIENTE is not null then
-        SELECT id into v_validar_id FROM CLIENTE where CLIENTE.ID = :new.ID_CLIENTE; -- raises no_data_found if invalid
-        update reserva
-        set NOME     = (SELECT nome from CLIENTE where CLIENTE.id = :new.ID_CLIENTE),
-            NIF      = (SELECT NIF from CLIENTE where CLIENTE.id = :new.ID_CLIENTE),
-            TELEFONE = (SELECT TELEFONE FROM CLIENTE WHERE CLIENTE.id = :new.ID_CLIENTE),
-            EMAIL    = (SELECT EMAIL FROM CLIENTE WHERE CLIENTE.id = :new.ID_CLIENTE);
+        SELECT nome, nif, telefone, email into v_nome, v_nif, v_telefone, v_email FROM CLIENTE where CLIENTE.ID = :new.ID_CLIENTE; -- raises no_data_found if invalid
+        :new.NOME := v_nome;
+        :new.NIF := v_nif;
+        :new.TELEFONE := v_telefone;
+        :new.EMAIL := v_email;
     end if;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RAISE_APPLICATION_ERROR(-20006, 'ID de Cliente inválido');
 end trgAtualizaCliente;
 /
-alter trigger trgAtualizaCliente disable ;
-BEGIN
-    insert into reserva(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (501,2000, 1); -- cliente inválido, gera uma exceção
-    insert into RESERVA(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (501, 1, 1); -- ativa o trigger
-end;
-/
+alter trigger trgAtualizaCliente enable;
+
+-- cliente inválido, gera uma exceção
+insert into reserva(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (3651, 4000, 1);
+
+-- cliente válido, insere a linha com o nome, nif, telefone e email
+SELECT * FROM RESERVA WHERE ID = 3651;
+insert into RESERVA(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (3651, 1, 1);
+SELECT * FROM RESERVA WHERE ID = 3651;
+rollback;

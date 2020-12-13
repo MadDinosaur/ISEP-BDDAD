@@ -12,12 +12,10 @@ CREATE OR REPLACE FUNCTION fncDisponibilidadeReserva(p_tipo_quarto RESERVA.ID_TI
 begin
     -- validação dos parâmetros
     -- tipo de quarto
-    select ID_TIPO_QUARTO
+    select ID
     into v_validar_tipo_quarto
-    from reserva
-    where ID_TIPO_QUARTO = p_tipo_quarto
-    group by ID_TIPO_QUARTO;
-    -- query lança no_data_found se o parâmetro for inválico
+    from TIPO_QUARTO
+    where id = p_tipo_quarto; -- query lança no_data_found se o parâmetro for inválido
     -- duração | número de pessoas
     if p_duracao < 1 or p_nr_pessoas < 1 then
         raise exInvalidData;
