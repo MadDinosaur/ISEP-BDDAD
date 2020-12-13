@@ -11,95 +11,132 @@ CREATE OR REPLACE FUNCTION fncDisponibilidadeReserva(p_tipo_quarto RESERVA.ID_TI
     v_validar_tipo_quarto    RESERVA.ID_TIPO_QUARTO%type;
 begin
     -- validação dos parâmetros
+    -- tipo de quarto
     select ID_TIPO_QUARTO
     into v_validar_tipo_quarto
     from reserva
     where ID_TIPO_QUARTO = p_tipo_quarto
-    group by ID_TIPO_QUARTO; -- raises no_data_found if invalid
+    group by ID_TIPO_QUARTO;
+    -- query lança no_data_found se o parâmetro for inválico
+    -- duração | número de pessoas
     if p_duracao < 1 or p_nr_pessoas < 1 then
         raise exInvalidData;
     end if;
+
     -- obtém o número de quartos reservados com o mesmo tipo_quarto e no mesmo intervalo de datas do pretendido
     select count(id)
     into v_num_quartos_reservados
     from RESERVA
     where ID_TIPO_QUARTO = p_tipo_quarto
-      and (DATA_ENTRADA BETWEEN p_data - p_duracao AND p_data + p_duracao
-        OR DATA_SAIDA BETWEEN p_data - p_duracao AND p_data + p_duracao);
+      AND p_data <= DATA_SAIDA
+      AND p_data + p_duracao >= DATA_ENTRADA;
+
     -- obtém todos os quartos com o tipo_quarto e lotacao pretendidos
     SELECT count(id)
     into v_num_quartos
     FROM QUARTO
     WHERE ID_TIPO_QUARTO = p_tipo_quarto
       AND LOTACAO_MAXIMA >= p_nr_pessoas;
+
     -- verifica se existem quartos excedentes tendo em conta o número de reservas com as características pretendidas
     if v_num_quartos_reservados < v_num_quartos then
-        return false;
-    else
         return true;
+    else
+        return false;
     end if;
 
 EXCEPTION
     WHEN exInvalidData THEN
-        RAISE_APPLICATION_ERROR(-20001, 'Duração e número de pessoas devem ser valores maiores que zero.');
+        DBMS_OUTPUT.PUT_LINE('Reserva Inválida! Duração e/ou número de pessoas devem ser valores maiores que zero.');
         RETURN null;
     WHEN no_data_found THEN
-        raise_application_error(-20002, 'Dados inválidos.');
+        DBMS_OUTPUT.PUT_LINE('Reserva Inválida! Tipo de quarto não existe.');
         RETURN null;
 end;
 /
 SET SERVEROUTPUT ON;
+
+DECLARE
+    result boolean;
 BEGIN
-    -- tipo de quarto inválido, gera exceção
-    if not fncDisponibilidadeReserva(4, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 1) then
-        DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
-    else
+    -- tipo de quarto inválido, retorna null
+    result := fncDisponibilidadeReserva(4, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 1);
+    if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
+    else
+        if not result then
+            DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
+        end if;
     end if;
 end;
 /
+DECLARE
+    result boolean;
 begin
-    -- duração inválida, gera exceção
-    if not fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 0, 1) then
-        DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
-    else
+    -- duração inválida, retorna null
+    result := fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 0, 1);
+    if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
+    else
+        if not result then
+            DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
+        end if;
     end if;
 end;
 /
+DECLARE
+    result boolean;
 begin
-    -- número de pessoas inválido, gera exceção
-    if not fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 0) then
-        DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
-    else
+    -- número de pessoas inválido, retorna null
+    result := fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 0);
+    if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
+    else
+        if not result then
+            DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
+        end if;
     end if;
 end;
 /
+DECLARE
+    result boolean;
 begin
-    -- número de pessoas inválido, gera exceção
-    if not fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 0) then
-        DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
-    else
+    -- reserva inválida, retorna false
+    result := fncDisponibilidadeReserva(1, TO_DATE('2020-01-03', 'yyyy-mm-dd'), 10, 2);
+    if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
+    else
+        if not result then
+            DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
+        end if;
     end if;
 end;
 /
+DECLARE
+    result boolean;
 begin
-    -- reserva inválida
-    if not fncDisponibilidadeReserva(2, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 2) then
-        DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
-    else
+    -- reserva válida, retorna true
+    result := fncDisponibilidadeReserva(1, TO_DATE('2021-12-01', 'yyyy-mm-dd'), 1, 1);
+    if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
+    else
+        if not result then
+            DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
+        end if;
     end if;
 end;
 /
+DECLARE
+    result boolean;
 begin
-    -- reserva válida
-    if not fncDisponibilidadeReserva(1, TO_DATE('2020-12-01', 'yyyy-mm-dd'), 1, 1) then
-        DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
-    else
+    -- reserva válida, retorna true
+    result := fncDisponibilidadeReserva(1, TO_DATE('2020-01-06', 'yyyy-mm-dd'), 2, 1);
+    if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
+    else
+        if not result then
+            DBMS_OUTPUT.PUT_LINE('Reserva indisponível.');
+        end if;
     end if;
 end;
 /
