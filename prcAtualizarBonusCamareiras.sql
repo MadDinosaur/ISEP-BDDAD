@@ -37,6 +37,7 @@ exception
         raise_application_error(-20011,'Parametro(s)s inválido(s)');
 end;
 /
+alter trigger trgCorrigirAlteracaoBonus disable;
 select * from Camareira;
 /
 begin
