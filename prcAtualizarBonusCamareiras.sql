@@ -1,3 +1,4 @@
+-- 5 --
 Create or Replace Procedure prcAtualizarBonusCamareiras(
   p_mes in Integer,
   p_ano in Integer default (extract(year from sysdate))) 
@@ -37,6 +38,7 @@ exception
         raise_application_error(-20011,'Parametro(s)s inválido(s)');
 end;
 /
+-- Testes
 alter trigger trgCorrigirAlteracaoBonus disable;
 select * from Camareira;
 /
@@ -48,6 +50,12 @@ select * from Camareira;
 /
 begin
 prcAtualizarBonusCamareiras(5,2020);
+end;
+/
+select * from Camareira;
+/
+begin
+prcAtualizarBonusCamareiras(1);
 end;
 /
 select * from Camareira;

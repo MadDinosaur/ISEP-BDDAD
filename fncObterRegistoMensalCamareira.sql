@@ -38,7 +38,8 @@ exception
         return null;
 end;
 /
-SET SERVEROUTPUT ON
+-- Testes
+SET SERVEROUTPUT ON;
 declare
     v_informacao sys_refcursor;
     v_id Camareira.id%type;
@@ -86,6 +87,18 @@ begin
     end if;
     dbms_output.put_line('====== Mês 13 ======');
     v_informacao:=fncObterRegistoMensalCamareira(13,2020);
+    if v_informacao is null then
+        dbms_output.put_line('Mes Inválido');
+    else    
+        loop 
+            fetch v_informacao 
+             into v_id,v_nomeCamareira,v_totalPreco,v_dataMin,v_dataMax,v_diasSemRegistos;
+             exit when v_informacao%notfound;
+             dbms_output.put_line(v_id || ' | ' || v_nomeCamareira || ' | ' || v_totalPreco || ' | '  || v_dataMin || ' | '  || v_dataMax || ' | '  || v_diasSemRegistos);
+        end loop;
+    end if;
+    dbms_output.put_line('====== Mês 12 sem ano ======');
+    v_informacao:=fncObterRegistoMensalCamareira(12);
     if v_informacao is null then
         dbms_output.put_line('Mes Inválido');
     else    
