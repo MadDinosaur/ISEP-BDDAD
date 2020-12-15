@@ -1,64 +1,61 @@
 CREATE OR REPLACE TRIGGER trgEpocasNaoSobrepostas
-
-BEFORE INSERT OR UPDATE ON EPOCA
-REFERENCING NEW AS NEW OLD AS OLD
-FOR EACH ROW
-DECLARE 
-
-
-    CURSOR cDataInicio IS
-        SELECT data_ini
-        FROM epoca;
-   
-    CURSOR cDataFim is
-        SELECT data_fim
-        FROM epoca;
-
-    vDataInicio epoca.data_ini%TYPE;
-    vDataFim epoca.data_fim%TYPE;
+AFTER INSERT OR UPDATE ON EPOCA
     
-    dataInicioException EXCEPTION;
-    dataFimException EXCEPTION;
+    DECLARE
+    vValidarEpoca INTEGER;
     
+    dataErradaException EXCEPTION;
     
 BEGIN
- OPEN cDataInicio;
- OPEN cDataFim;
-    LOOP
-       FETCH cDataInicio INTO vDataInicio;
-       FETCH cDataFim INTO vDataFim;
-       
-        EXIT WHEN cDataInicio%notfound;
-        EXIT WHEN cDataFim%notfound;
-        
-        IF(:new.data_ini between vDataInicio AND vDataFim) THEN
-    
-            raise dataInicioException;
-    
-        END IF;
-    
-        IF(:new.data_fim between vDataInicio AND vDataFim) THEN
-    
-            raise dataFimException;
-    
-        END IF;
-    END LOOP;
-   CLOSE cDataFim;
-   CLOSE cDataInicio;
 
-EXCEPTION
-    WHEN dataInicioException THEN
-        RAISE_APPLICATION_ERROR(-20001, 'Data Início Inválida');
-        
-    WHEN dataFimException THEN
-        raise_application_error(-20002, 'Data Fim Inválida.');
+    SELECT COUNT(*) INTO vValidarEpoca
+    FROM epoca ep
+    WHERE EXISTS (
+        SELECT ep2.id 
+        FROM epoca ep2
+        WHERE (ep.data_fim BETWEEN ep2.data_ini AND ep2.data_fim OR
+              ep.data_ini BETWEEN ep2.data_ini AND ep2.data_fim) 
+           AND ep.ROWID != ep2.ROWID);
+
+    IF vValidarEpoca > 0 THEN
+
+            RAISE dataErradaException;
+          
+    END IF;
+    
+    EXCEPTION
+        WHEN dataErradaException THEN
+          RAISE_APPLICATION_ERROR(-20001, 'Datas Sobrepostas');
 END;
 /
+    
+-- falha insert
+insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 9', to_date('2020-04-03', 'yyyy-mm-dd'), to_date('2020-06-30', 'yyyy-mm-dd'));
+insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 10', to_date('2021-04-03', 'yyyy-mm-dd'), to_date('2022-06-30', 'yyyy-mm-dd'));
+insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 11', to_date('2020-04-03', 'yyyy-mm-dd'), to_date('2021-06-30', 'yyyy-mm-dd'));
 
-alter trigger trgEpocasNaoSobrepostas enable;
-set SERVEROUTPUT on;
-    
-insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2020-04-03', 'yyyy-mm-dd'), to_date('2020-06-30', 'yyyy-mm-dd'));
-insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2021-04-03', 'yyyy-mm-dd'), to_date('2020-06-30', 'yyyy-mm-dd'));
-insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2020-04-03', 'yyyy-mm-dd'), to_date('2021-06-30', 'yyyy-mm-dd'));
-    
+-- falha update
+
+UPDATE epoca
+SET data_ini = to_date('2020-04-03', 'yyyy-mm-dd')
+where id=2;
+
+UPDATE epoca
+SET data_fim = to_date('2020-06-30', 'yyyy-mm-dd')
+where id=2;
+
+-- insert funcional
+
+
+insert into epoca(id, nome, data_ini, data_fim) values(5, 'Época 2', to_date('2021-04-03', 'yyyy-mm-dd'), to_date('2021-06-30', 'yyyy-mm-dd'));
+
+-- update funcional
+
+UPDATE epoca
+SET data_fim = to_date('2025-06-30', 'yyyy-mm-dd')
+where id=2;
+
+UPDATE epoca
+SET data_ini = to_date('2025-04-03', 'yyyy-mm-dd')
+where id=2;
+
