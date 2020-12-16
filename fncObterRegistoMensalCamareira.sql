@@ -10,7 +10,7 @@ is
 begin
     if p_mes < 1 or p_mes > 12 then
         raise ex_mesInvalido;
-    end if;--1 3 5 7 8 10 12
+    end if;
     if p_mes in (1,3,5,7,8,10,12) then
         v_ultimoDiaMes:=31;
     elsif p_mes in (4,6,9,11) then

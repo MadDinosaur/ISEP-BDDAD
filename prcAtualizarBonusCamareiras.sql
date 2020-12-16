@@ -40,22 +40,20 @@ end;
 /
 -- Testes
 alter trigger trgCorrigirAlteracaoBonus disable;
+
 select * from Camareira;
 /
-begin
-prcAtualizarBonusCamareiras(3,2020);
-end;
+call prcAtualizarBonusCamareiras(3,2020);
 /
 select * from Camareira;
-/
-begin
-prcAtualizarBonusCamareiras(5,2020);
-end;
-/
+rollback;
+
 select * from Camareira;
-/
-begin
-prcAtualizarBonusCamareiras(1);
-end;
-/
+call prcAtualizarBonusCamareiras(5,2020);
 select * from Camareira;
+rollback;
+
+select * from Camareira;
+call prcAtualizarBonusCamareiras(1);
+select * from Camareira;
+rollback;
