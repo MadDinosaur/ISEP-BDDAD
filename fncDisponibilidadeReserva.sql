@@ -58,6 +58,7 @@ DECLARE
     result boolean;
 BEGIN
     -- tipo de quarto inválido, retorna null
+    DBMS_OUTPUT.PUT_LINE('====== Tipo de quarto inválido ======');
     result := fncDisponibilidadeReserva(4, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 1);
     if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
@@ -72,6 +73,7 @@ DECLARE
     result boolean;
 begin
     -- duração inválida, retorna null
+    DBMS_OUTPUT.PUT_LINE('====== Duração inválida ======');
     result := fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 0, 1);
     if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
@@ -86,6 +88,7 @@ DECLARE
     result boolean;
 begin
     -- número de pessoas inválido, retorna null
+    DBMS_OUTPUT.PUT_LINE('====== Número de pessoas inválido ======');
     result := fncDisponibilidadeReserva(3, TO_DATE('2020-01-01', 'yyyy-mm-dd'), 5, 0);
     if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
@@ -100,6 +103,8 @@ DECLARE
     result boolean;
 begin
     -- reserva inválida, retorna false
+    DBMS_OUTPUT.PUT_LINE('====== Reserva para dia 03-01-2020 com duração 10 dias ======');
+    DBMS_OUTPUT.PUT_LINE('====== Todos os quartos reservados (lotação esgotada)  ======');
     result := fncDisponibilidadeReserva(1, TO_DATE('2020-01-03', 'yyyy-mm-dd'), 10, 2);
     if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
@@ -113,7 +118,9 @@ end;
 DECLARE
     result boolean;
 begin
-    -- reserva válida, retorna true
+     -- reserva válida, retorna true
+    DBMS_OUTPUT.PUT_LINE('====== Reserva para dia 01-12-2021 com duração 1 dia ======');
+    DBMS_OUTPUT.PUT_LINE('====== Sem quartos reservados ======');
     result := fncDisponibilidadeReserva(1, TO_DATE('2021-12-01', 'yyyy-mm-dd'), 1, 1);
     if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
@@ -128,6 +135,8 @@ DECLARE
     result boolean;
 begin
     -- reserva válida, retorna true
+    DBMS_OUTPUT.PUT_LINE('====== Reserva para dia 01-12-2021 com duração 1 dia ======');
+    DBMS_OUTPUT.PUT_LINE('====== Apenas alguns quartos reservados ======');
     result := fncDisponibilidadeReserva(1, TO_DATE('2020-01-06', 'yyyy-mm-dd'), 2, 1);
     if result then
         DBMS_OUTPUT.PUT_LINE('Reserva disponível.');
