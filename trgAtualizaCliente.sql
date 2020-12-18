@@ -23,9 +23,15 @@ end trgAtualizaCliente;
 alter trigger trgAtualizaCliente enable;
 
 -- cliente inválido, gera uma exceção
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 1: Cliente inválido (não existente) ======');
+end;
 insert into reserva(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (3651, 4000, 1);
 
 -- cliente válido, insere a linha com o nome, nif, telefone e email
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 2: Cliente válido ======');
+end;
 SELECT * FROM RESERVA WHERE ID = 3651;
 insert into RESERVA(ID, ID_CLIENTE, ID_TIPO_QUARTO) values (3651, 1, 1);
 SELECT * FROM RESERVA WHERE ID = 3651;

@@ -69,23 +69,38 @@ EXCEPTION
 end;
 /
 -- inserir data de entrada após data de saída --> gera exceção
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 1: Datas inválidas (Data de entrada após data de saída) ======');
+end;
 call prcRegistarReserva(1, TO_DATE('2020-01-08', 'yyyy-mm-dd'), TO_DATE('2020-01-06', 'yyyy-mm-dd'), 1, 1);
 
 -- inserir id do cliente, juntamente com o nome e nif --> gera exceção
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 2: Parâmetros inválidos (Inserir ID do cliente juntamente com nome e NIF) ======');
+end;
 CALL prcRegistarReserva(1, TO_DATE('2020-01-06', 'yyyy-mm-dd'), TO_DATE('2020-01-08', 'yyyy-mm-dd'), 1, 1, 'Cliente 1',
                         '123');
 
 -- inserir apenas o nome do cliente, sem nif --> gera exceção
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 3: Parâmetros inválidos (Inserir apenas o nome do cliente, sem NIF) ======');
+end;
 CALL prcRegistarReserva(1, TO_DATE('2020-01-06', 'yyyy-mm-dd'), TO_DATE('2020-01-08', 'yyyy-mm-dd'), 1, null,
                         'Cliente 1');
 
 -- inserir reserva com o id de cliente
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 4: Registo de reserva para o cliente com ID: 1 ======');
+end;
 SELECT * FROM RESERVA WHERE ID = 3651;
 CALL prcRegistarReserva(1, TO_DATE('2020-01-06', 'yyyy-mm-dd'), TO_DATE('2020-01-08', 'yyyy-mm-dd'), 1, 1);
 SELECT * FROM RESERVA WHERE ID = 3651;
 ROLLBACK;
 
 -- inserir reserva com o nome e nif do cliente
+begin
+    DBMS_OUTPUT.PUT_LINE('====== Teste 5: Registo de reserva para o cliente com o nome "Cliente novo" e NIF: 999 ======');
+end;
 SELECT * FROM RESERVA WHERE ID = 3651;
 CALL prcRegistarReserva(1, TO_DATE('2020-01-06', 'yyyy-mm-dd'), TO_DATE('2020-01-08', 'yyyy-mm-dd'), 1, null,
                         'Cliente novo', '999');
