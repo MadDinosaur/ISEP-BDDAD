@@ -1,0 +1,53 @@
+@startuml
+skinparam linetype ortho
+
+entity InstrumentoMusical {
+    idInstrumento (pk)
+--
+    nome
+    tipo
+ }
+entity Musico {
+    idMusico (pk)
+    --
+    nome
+    morada
+
+}
+entity Album {
+    codigo (pk)
+    idMusico (fk)
+    --
+    titulo
+    dataGravacao
+    formato
+    dataLancamento
+}
+entity Musica {
+    idMusica (pk)
+    codigoAlbum (fk)
+    --
+    titulo
+}
+
+entity toca {
+    idMusica (pk, fk)
+    idInstrumento (pk, fk)
+    --
+    dataInicio
+}
+
+entity participa {
+    idMusico (pk, fk)
+    idMusica (pk, fk)
+}
+
+Musica }|..|| Album
+toca }|..|| Musico
+toca }|..|| InstrumentoMusical
+participa }|..|| Musico
+participa }|..|| Musica
+Album }|..|| Musico
+
+
+@enduml

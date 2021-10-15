@@ -1,0 +1,54 @@
+@startuml
+skinparam linetype ortho
+
+entity Aviao {
+    nrRegisto (pk)
+    codigoModelo (fk)
+}
+entity Modelo {
+    codigo (pk)
+    --
+    capacidade
+    peso
+}
+entity Tecnico {
+    cartaoCidadao (pk)
+    --
+    endereco
+    telefone
+    salario
+    nivelQualificacao
+}
+entity Controlador {
+     cartaoCidadao (pk)
+}
+entity Funcionario {
+    cartaoCidadao (pk)
+    --
+    endereco
+    telefone
+    salario
+    nivelQualificacao
+}
+
+entity teste {
+    nrRegistoAviao (pk, fk)
+    cartaoCidadaoTecnico (pk, fk)
+    --
+    pontuacao
+}
+entity perito {
+    cartaoCidadaoTecnico (pk, fk)
+    codigoModelo (pk, fk)
+    --
+}
+
+teste }|..|| Aviao
+teste }|..|| Tecnico
+perito }|...|| Tecnico
+perito }|..|| Modelo
+Tecnico }|..|| Funcionario
+Controlador }|..|| Funcionario
+Aviao }|...|| Modelo
+
+@enduml
