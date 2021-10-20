@@ -1,0 +1,54 @@
+@startuml
+skinparam linetype ortho
+
+entity Ator {
+    id_ator (pk)
+    --
+}
+
+entity Realizador {
+    id_realizador (pk)
+    --
+}
+
+entity Episodio {
+    id_episodio (pk)
+    id_realizador (fk)
+    id_serie (pk, fk)
+    --
+}
+
+entity SerieTV {
+    id_serie (pk)
+    --
+}
+
+entity participacao_ep {
+    id_ator (pk, fk)
+    id_episodio (pk, fk)
+    --
+}
+
+entity participacao_serie {
+    id_ator (pk, fk)
+    id_serie (pk, fk)
+    --
+    papel
+}
+
+entity transmissao {
+    data (pk)
+    id_episodio (pk, fk)
+    id_serie (pk, fk)
+    --
+}
+
+participacao_ep }|..|| Ator
+participacao_ep }|...|| Episodio
+Episodio }|...|| Realizador
+Episodio }|...|| SerieTV
+transmissao }|..|| Episodio
+participacao_serie }|.|| SerieTV
+participacao_serie }|.|| Ator
+
+@enduml

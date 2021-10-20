@@ -1,0 +1,15 @@
+@startuml
+skinparam linetype ortho
+
+entity Biblioteca {}
+
+entity Livro {}
+
+entity Estudante {}
+
+entity Funcionario {}
+
+entity Docente {}
+
+entity Departamento {}
+@enduml
