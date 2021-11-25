@@ -27,8 +27,25 @@
 - FROM
 - WHERE
 - GROUP BY
+*deve ter todos os atributos do SELECT exceto os operadores de conjuntos*
 - HAVING
 - ORDER BY
+
+### Operadores de conjuntos
+- **AVG** 
+- **COUNT** 
+- **MAX**
+- **MIN**
+
+*i.e* SELECT * FROM aluno WHERE idade = MIN(SELECT idade FROM aluno) *retorna aluno mais novo da tabela*
+
+- **SUM**
+- **ALL**
+
+*i.e* SELECT * FROM aluno WHERE idade <= ALL(SELECT idade FROM aluno) *retorna aluno mais novo da tabela*
+- **ANY**
+- **IN**
+- **INTERSECT** 
 
 ### Subqueries
 - Podem retornar **múltiplas linhas** - operador de conjuntos IN, ANY, ...
