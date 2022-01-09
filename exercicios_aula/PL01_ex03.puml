@@ -1,0 +1,70 @@
+@startuml
+skinparam linetype ortho
+
+entity Projeto {
+    numero (pk)
+    cartao_cidadao_professor (fk)
+    --
+    descricao
+    entidade_financeira
+    data_inicio
+    data_fim
+    orcamento
+}
+
+entity Departamento {
+    numero (pk)
+    cartao_cidadao_professor (fk)
+    --
+    sigla
+    sala
+}
+
+entity Professor {
+    cartao_cidadao (pk)
+    --
+    categoria
+    area_investigacao
+    nome
+    data_nascimento
+}
+
+entity Aluno {
+    cartao_cidadao (pk)
+    numero_departamento (fk)
+    cartao_cidadao_aluno (fk)
+    --
+    data_nascimento
+    grau
+}
+
+entity trabalha_aluno {
+    numero_projeto (pk, fk)
+    cartao_cidadao_aluno (pk, fk)
+    cartao_cidadao_professor (fk)
+}
+
+entity trabalha_departamento {
+    numero_departamento (pk, fk)
+    cartao_cidadao_professor (pk, fk)
+    --
+    percentagem_tempo
+}
+
+entity trabalha_projeto {
+    numero_projeto (pk, fk)
+    cartao_cidadao_professor (pk, fk)
+}
+
+trabalha_aluno }|.|| Aluno
+trabalha_aluno }|..|| Projeto
+Professor }|..|| trabalha_aluno
+Projeto }|..|| Professor
+trabalha_projeto }|..|| Projeto
+trabalha_projeto }|..|| Professor
+Departamento }|..|| Professor
+trabalha_departamento }|.|| Professor
+trabalha_departamento }|..|| Departamento
+Aluno }|.|| Departamento
+
+@enduml

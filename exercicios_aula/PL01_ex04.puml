@@ -1,0 +1,20 @@
+@startuml
+skinparam linetype ortho
+
+entity AulaPratica {}
+
+entity Aluno {}
+
+entity Exercicio {
+    materia
+}
+
+entity Aluno_Exercicio {
+    classificacao
+}
+
+Aluno_Exercicio }|..|| Exercicio
+Aluno_Exercicio }|..|| Aluno
+AulaPratica }|..|| Exercicio
+
+@enduml
